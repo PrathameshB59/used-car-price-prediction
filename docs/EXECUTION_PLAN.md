@@ -1,0 +1,190 @@
+# Execution Plan
+
+## Project
+
+**Used Car Price Prediction Using Machine Learning**
+
+## Target Market
+
+**Indian Used-Car Market**
+
+## Objective
+
+Build a machine learning based web application that predicts the
+estimated selling price of a used car using vehicle and listing
+information.
+
+The final application will run locally as a website using Django,
+HTML, CSS, and JavaScript.
+
+---
+
+# Development Phases
+
+## Phase 1 — Project Setup
+
+- [x] Decide project topic
+- [x] Select Indian used-car market
+- [x] Create project directory
+- [x] Create project subdirectories
+- [x] Create documentation structure
+- [x] Create Python virtual environment
+- [x] Create requirements.txt
+- [x] Create .gitignore
+- [x] Install Python dependencies
+- [x] Verify core Python/ML packages
+
+## Phase 2 — Dataset Selection
+
+- [x] Research Indian used-car datasets on Kaggle
+- [x] Compare candidate datasets
+- [x] Identify preferred dataset
+- [ ] Download selected dataset
+- [ ] Inspect actual dataset file
+- [ ] Verify rows and columns
+- [ ] Verify target variable
+- [ ] Document dataset source and license
+- [ ] Decide final feature policy
+
+## Phase 3 — Data Understanding
+
+- [ ] Load dataset using Pandas
+- [ ] Inspect dataset shape
+- [ ] Inspect column names
+- [ ] Inspect data types
+- [ ] Check missing values
+- [ ] Check duplicate records
+- [ ] Check unique values
+- [ ] Identify numerical features
+- [ ] Identify categorical features
+- [ ] Identify boolean/date features
+- [ ] Analyze target variable
+
+## Phase 4 — Data Cleaning
+
+- [ ] Handle missing values
+- [ ] Handle duplicate records
+- [ ] Convert incorrect data types
+- [ ] Clean numerical values
+- [ ] Clean categorical values
+- [ ] Process dates where appropriate
+- [ ] Investigate outliers
+- [ ] Document cleaning decisions
+
+## Phase 5 — Exploratory Data Analysis
+
+- [ ] Analyze selling-price distribution
+- [ ] Analyze price vs vehicle age
+- [ ] Analyze price vs kilometers driven
+- [ ] Analyze price by fuel type
+- [ ] Analyze price by transmission
+- [ ] Analyze price by ownership
+- [ ] Analyze price by brand
+- [ ] Analyze price by body type
+- [ ] Analyze price by city/state where appropriate
+- [ ] Analyze numerical correlations
+- [ ] Document EDA findings
+
+## Phase 6 — Feature Engineering
+
+- [ ] Create vehicle age feature
+- [ ] Process categorical features
+- [ ] Process numerical features
+- [ ] Evaluate high-cardinality features
+- [ ] Remove unsuitable/leakage-prone features
+- [ ] Build preprocessing pipeline
+- [ ] Prepare final ML feature set
+
+## Phase 7 — Machine Learning
+
+- [ ] Split data into training and testing sets
+- [ ] Train Linear Regression
+- [ ] Train Decision Tree Regressor
+- [ ] Train Random Forest Regressor
+- [ ] Train Gradient Boosting Regressor
+- [ ] Train XGBoost Regressor
+- [ ] Record training results
+
+## Phase 8 — Model Evaluation
+
+- [ ] Calculate MAE
+- [ ] Calculate RMSE
+- [ ] Calculate R²
+- [ ] Compare all models
+- [ ] Analyze prediction errors
+- [ ] Select final model
+- [ ] Document model-selection reasoning
+
+## Phase 9 — Model Saving
+
+- [ ] Save trained model
+- [ ] Save preprocessing pipeline
+- [ ] Test loading model
+- [ ] Test prediction from saved model
+- [ ] Store model artifacts in models/
+
+## Phase 10 — Django Backend
+
+- [ ] Create Django application
+- [ ] Create prediction endpoint
+- [ ] Validate API input
+- [ ] Load saved model
+- [ ] Apply preprocessing
+- [ ] Generate prediction
+- [ ] Return JSON response
+- [ ] Add error handling
+
+## Phase 11 — Frontend
+
+- [ ] Create HTML interface
+- [ ] Create CSS design
+- [ ] Create JavaScript logic
+- [ ] Create car information form
+- [ ] Add client-side validation
+- [ ] Connect frontend to Django API
+- [ ] Display predicted price
+- [ ] Add loading/error states
+- [ ] Make interface responsive
+
+## Phase 12 — Integration
+
+- [ ] Connect frontend and backend
+- [ ] Test complete prediction flow
+- [ ] Test valid inputs
+- [ ] Test invalid inputs
+- [ ] Test missing inputs
+- [ ] Test multiple vehicle examples
+- [ ] Verify prediction consistency
+
+## Phase 13 — Testing
+
+- [ ] Test preprocessing
+- [ ] Test model loading
+- [ ] Test prediction function
+- [ ] Test Django API
+- [ ] Test frontend integration
+- [ ] Run pytest
+- [ ] Perform end-to-end testing
+
+## Phase 14 — Documentation
+
+- [ ] Update README
+- [ ] Update CHANGELOG
+- [ ] Update COMMAND
+- [ ] Update HOW_TO_USE
+- [ ] Update EXECUTION_PLAN
+- [ ] Add architecture explanation
+- [ ] Add dataset explanation
+- [ ] Add ML results
+- [ ] Add screenshots
+- [ ] Add troubleshooting section
+
+## Phase 15 — Final Project
+
+- [ ] Final code cleanup
+- [ ] Final testing
+- [ ] Verify localhost application
+- [ ] Prepare project demonstration
+- [ ] Prepare AIML viva explanation
+- [ ] Prepare presentation
+- [ ] Prepare final project report

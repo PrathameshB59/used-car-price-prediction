@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Used Car Price Prediction</title>
+    <link rel="stylesheet" href="{% static 'predictor/css/style.css' %}">
+</head>
+
+<body>
+
+    <main class="page">
+
+        <section class="hero">
+            <p class="eyebrow">AIML MINI PROJECT</p>
+
+            <h1>
+                Used Car Price
+                <span>Prediction</span>
+            </h1>
+
+            <p class="description">
+                Predict the estimated price of a used car
+                in the Indian market using machine learning.
+            </p>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                Django backend is running
+            </div>
+        </section>
+
+        <section class="prediction-card">
+
+            <h2>Car Details</h2>
+
+            <p class="card-description">
+                Prediction inputs will be connected to the trained
+                machine learning model in a later phase.
+            </p>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="brand">Brand</label>
+
+                    <select id="brand">
+                        <option value="">Select brand</option>
+                        <option>Maruti Suzuki</option>
+                        <option>Hyundai</option>
+                        <option>Tata</option>
+                        <option>Mahindra</option>
+                        <option>Honda</option>
+                        <option>Toyota</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Manufacturing Year</label>
+
+                    <input
+                        type="number"
+                        id="year"
+                        placeholder="e.g. 2020"
+                        min="1990"
+                        max="2026"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="km">Kilometers Driven</label>
+
+                    <input
+                        type="number"
+                        id="km"
+                        placeholder="e.g. 45000"
+                        min="0"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="fuel">Fuel Type</label>
+
+                    <select id="fuel">
+                        <option value="">Select fuel type</option>
+                        <option>Petrol</option>
+                        <option>Diesel</option>
+                        <option>CNG</option>
+                        <option>Electric</option>
+                        <option>Hybrid</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button id="predict-button" type="button">
+                Predict Price
+            </button>
+
+            <div id="result" class="result hidden">
+                <p>Estimated Price</p>
+                <strong id="predicted-price">₹ --</strong>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="{% static 'predictor/js/script.js' %}"></script>
+
+</body>
+</html>

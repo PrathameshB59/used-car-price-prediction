@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Django
+db.sqlite3
+*.sqlite3
+staticfiles/
+
+# Machine Learning datasets
+dataset/*.csv
+dataset/*.xlsx
+dataset/*.xls
+dataset/*.json
+dataset/*.parquet
+dataset/*.zip
+
+# Machine Learning model artifacts
+models/*.pkl
+models/*.pickle
+models/*.joblib
+models/*.h5
+models/*.keras
+models/*.onnx
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
