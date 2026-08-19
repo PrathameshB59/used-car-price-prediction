@@ -188,3 +188,75 @@ HTML, CSS, and JavaScript.
 - [ ] Prepare AIML viva explanation
 - [ ] Prepare presentation
 - [ ] Prepare final project report
+
+---
+
+## Learning Update: Encoding
+
+Encoding is the process of converting categorical features into numerical representations that machine-learning algorithms can use.
+
+Our dataset contains numerical features such as:
+
+- vehicle_age
+- km_driven
+- mileage
+- engine
+- max_power
+- seats
+
+It also contains categorical features such as:
+
+- brand
+- model
+- seller_type
+- fuel_type
+- transmission_type
+
+Numerical values can generally be used directly by machine-learning algorithms, while categorical values such as "Petrol", "Diesel", "Manual", or "Maruti" need to be represented numerically.
+
+### One-Hot Encoding
+
+One-hot encoding creates a separate binary column for each category.
+
+Example:
+
+fuel_type:
+
+Petrol
+Diesel
+CNG
+
+can become:
+
+fuel_Petrol | fuel_Diesel | fuel_CNG
+------------ | ----------- | ----------
+1            | 0           | 0
+0            | 1           | 0
+0            | 0           | 1
+
+This avoids incorrectly creating an artificial numerical order between categories.
+
+### Project Decision
+
+We will inspect the number of unique values in each categorical feature before deciding the exact preprocessing strategy.
+
+The target column is:
+
+selling_price
+
+The target is not encoded because it is the continuous numerical value that the model is learning to predict.
+
+Encoding is part of preprocessing, not model training.
+
+Conceptually:
+
+Raw data
+→ preprocessing
+→ encoding
+→ numerical feature matrix
+→ model training
+→ trained model
+→ prediction
+
+The same preprocessing used during training must also be applied to new user input during prediction.
+

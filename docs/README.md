@@ -207,3 +207,21 @@ The following are intentionally excluded from version control:
 
 The first Git commit is being created after the Django frontend
 foundation was successfully verified.
+
+---
+
+## Dataset Acquisition Status
+
+The selected Kaggle dataset has been downloaded and extracted locally.
+
+### Dataset
+
+**Name:** CarDekho Used Car Dataset
+
+**Source:** Kaggle
+
+**Local CSV:**
+
+```text
+dataset/cardekho_dataset.csv
+{ _ble_edit_exec_gexec__save_lastarg "$@"; } 4>&1 5>&2 &>/dev/null
