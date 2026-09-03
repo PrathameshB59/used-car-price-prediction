@@ -8,38 +8,42 @@ import pandas as pd
 BASE_DIR = Path(__file__).resolve().parent
 
 
-# Define paths to the saved ML files
-MODEL_PATH = BASE_DIR / "car_price_model.joblib"
-PREPROCESSOR_PATH = BASE_DIR / "preprocessor.joblib"
+# Paths to the final V2 ML artifacts
+MODEL_PATH = BASE_DIR / "final_car_price_model.joblib"
+PREPROCESSOR_PATH = BASE_DIR / "final_preprocessor.joblib"
 
 
-# Load the trained model
+# Load the final trained model
 model = joblib.load(MODEL_PATH)
 
 
-# Load the preprocessor
+# Load the preprocessing pipeline used during training
 preprocessor = joblib.load(PREPROCESSOR_PATH)
 
 
 def predict_car_price(car_data):
     """
-    Predict the selling price of a car.
+    Predict the selling price of a used car.
 
     Parameters:
-        car_data (dict): Dictionary containing car features.
+        car_data (dict):
+            Dictionary containing the 8 features expected
+            by the final V2 ML model.
 
     Returns:
-        float: Predicted selling price.
+        float:
+            Predicted selling price.
     """
 
-    # Convert the dictionary into a one-row DataFrame
+    # Convert the dictionary into a one-row DataFrame.
+    # The DataFrame structure must match the training features.
     input_df = pd.DataFrame([car_data])
 
-    # Apply the same preprocessing used during training
+    # Apply the same preprocessing used during model training.
     processed_data = preprocessor.transform(input_df)
 
-    # Make prediction
+    # Generate the price prediction.
     prediction = model.predict(processed_data)
 
-    # Return the first prediction as a float
+    # Return the first prediction as a normal Python float.
     return float(prediction[0])

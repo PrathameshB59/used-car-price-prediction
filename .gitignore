@@ -53,3 +53,13 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Development backups / temporary files
+*_backup.*
+*_before_*
+*.bak
+old\ cells
+
+# Generated / local dataset directories
+dataset/candidates/
+dataset/processed/

@@ -1,180 +1,769 @@
+/* =========================================
+   GLOBAL
+========================================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
-    min-height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #0f1115;
-    color: #f5f7fa;
+:root {
+    --bg: #0b0f14;
+    --surface: #141a22;
+    --surface-light: #1a212b;
+    --input: #0d1218;
+
+    --border: #293442;
+    --border-hover: #3b4959;
+
+    --text: #f4f7fa;
+    --muted: #9da9b7;
+
+    --accent: #63e6be;
+    --accent-dark: #0a1914;
+
+    --danger: #ff7b7b;
 }
 
-.page {
-    width: min(1100px, 92%);
-    margin: 0 auto;
-    padding: 70px 0;
+html {
+    scroll-behavior: smooth;
 }
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(99, 230, 190, 0.09),
+            transparent 35%
+        ),
+        var(--bg);
+
+    color: var(--text);
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.page {
+    width: min(1120px, 92%);
+
+    margin: 0 auto;
+
+    padding: 55px 0 35px;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
 
 .hero {
     text-align: center;
-    margin-bottom: 45px;
+
+    margin-bottom: 38px;
 }
 
 .eyebrow {
-    font-size: 13px;
+    display: inline-block;
+
+    padding: 7px 14px;
+
+    border:
+        1px solid
+        rgba(99, 230, 190, 0.25);
+
+    border-radius: 999px;
+
+    background:
+        rgba(99, 230, 190, 0.06);
+
+    color: var(--accent);
+
+    font-size: 12px;
+
     font-weight: 700;
-    letter-spacing: 3px;
-    margin-bottom: 18px;
-    color: #63e6be;
+
+    letter-spacing: 2.5px;
+
+    margin-bottom: 20px;
 }
 
 .hero h1 {
-    font-size: clamp(42px, 7vw, 76px);
-    line-height: 1;
-    margin-bottom: 24px;
+    max-width: 850px;
+
+    margin: 0 auto 20px;
+
+    font-size:
+        clamp(42px, 7vw, 72px);
+
+    line-height: 0.98;
+
+    letter-spacing: -2px;
 }
 
 .hero h1 span {
     display: block;
-    color: #63e6be;
+
+    color: var(--accent);
 }
 
 .description {
     max-width: 650px;
+
     margin: 0 auto;
-    color: #aeb6c2;
-    font-size: 18px;
+
+    color: var(--muted);
+
+    font-size: 17px;
+
     line-height: 1.7;
 }
 
+
+/* =========================================
+   STATUS
+========================================= */
+
 .status {
     display: inline-flex;
+
     align-items: center;
+
     gap: 9px;
-    margin-top: 24px;
+
+    margin-top: 22px;
+
     padding: 9px 15px;
-    border: 1px solid #29313d;
+
+    border:
+        1px solid
+        var(--border);
+
     border-radius: 999px;
-    color: #c8d0da;
-    font-size: 14px;
+
+    background:
+        rgba(255, 255, 255, 0.02);
+
+    color: #cbd3dc;
+
+    font-size: 13px;
 }
 
 .status-dot {
-    width: 9px;
-    height: 9px;
+    width: 8px;
+
+    height: 8px;
+
     border-radius: 50%;
-    background: #63e6be;
+
+    background: var(--accent);
+
+    box-shadow:
+        0 0 10px
+        rgba(99, 230, 190, 0.7);
 }
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
 
 .prediction-card {
-    max-width: 850px;
+    width: 100%;
+
+    max-width: 900px;
+
     margin: 0 auto;
-    padding: 35px;
-    background: #181c23;
-    border: 1px solid #29313d;
-    border-radius: 20px;
+
+    padding: 38px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(26, 33, 43, 0.98),
+            rgba(18, 24, 32, 0.98)
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0, 0, 0, 0.3),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.025);
 }
 
-.prediction-card h2 {
-    font-size: 28px;
+
+/* =========================================
+   CARD HEADING
+========================================= */
+
+.card-heading {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
     margin-bottom: 10px;
 }
 
+.card-icon {
+    display: grid;
+
+    place-items: center;
+
+    width: 44px;
+
+    height: 44px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(99, 230, 190, 0.1);
+
+    border:
+        1px solid
+        rgba(99, 230, 190, 0.2);
+
+    font-size: 21px;
+}
+
+.prediction-card h2 {
+    font-size: 27px;
+
+    letter-spacing: -0.5px;
+}
+
 .card-description {
-    color: #9da7b4;
+    color: var(--muted);
+
     line-height: 1.6;
+
+    margin-bottom: 32px;
+}
+
+
+/* =========================================
+   FORM SECTIONS
+========================================= */
+
+.form-section {
     margin-bottom: 30px;
 }
 
+.section-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    color: #dce4eb;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.8px;
+
+    text-transform: uppercase;
+}
+
+.section-title::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: var(--border);
+}
+
+
+/* =========================================
+   FORM GRID
+========================================= */
+
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
 }
 
 .form-group {
     display: flex;
+
     flex-direction: column;
+
     gap: 9px;
 }
 
 .form-group label {
-    font-size: 14px;
+    color: #dce3ea;
+
+    font-size: 13px;
+
     font-weight: 600;
-    color: #dce2e9;
 }
+
+
+/* =========================================
+   INPUTS
+========================================= */
 
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 14px 15px;
-    border: 1px solid #333b48;
-    border-radius: 10px;
-    background: #101319;
-    color: #f5f7fa;
+
+    min-height: 48px;
+
+    padding: 13px 14px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 11px;
+
+    background: var(--input);
+
+    color: var(--text);
+
     font-size: 15px;
+
     outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.form-group input:hover,
+.form-group select:hover {
+    border-color: var(--border-hover);
 }
 
 .form-group input:focus,
 .form-group select:focus {
-    border-color: #63e6be;
+    border-color: var(--accent);
+
+    background: #0f161d;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(99, 230, 190, 0.08);
 }
 
-#predict-button {
+
+/* =========================================
+   READONLY AGE
+========================================= */
+
+.form-group input[readonly] {
+    cursor: not-allowed;
+
+    color: #c6d0d9;
+
+    background:
+        rgba(99, 230, 190, 0.035);
+}
+
+
+/* =========================================
+   FIELD HELP
+========================================= */
+
+.field-help {
+    color: #6f7b88;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+}
+
+/* =========================================
+   OTHER / CUSTOM INPUT
+========================================= */
+
+.other-input {
+    display: none;
+
     width: 100%;
-    margin-top: 28px;
-    padding: 15px;
-    border: none;
+
+    min-height: 46px;
+
+    padding: 12px 14px;
+
+    border:
+        1px solid
+        var(--accent);
+
     border-radius: 10px;
-    background: #63e6be;
-    color: #0b1512;
-    font-size: 16px;
-    font-weight: 700;
+
+    background: #0d1218;
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(99, 230, 190, 0.05);
+}
+
+.other-input.show {
+    display: block;
+}
+
+.other-input::placeholder {
+    color: #667381;
+}
+
+.other-input:focus {
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(99, 230, 190, 0.08);
+}
+
+/* =========================================
+   NUMBER INPUT
+========================================= */
+
+.form-group input[type="number"] {
+    appearance: textfield;
+}
+
+.form-group input[type="number"]::-webkit-inner-spin-button,
+.form-group input[type="number"]::-webkit-outer-spin-button {
+    opacity: 0.5;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+#predict-button {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    width: 100%;
+
+    min-height: 54px;
+
+    margin-top: 8px;
+
+    padding: 15px 20px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: var(--accent);
+
+    color: var(--accent-dark);
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.2px;
+
     cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
 }
 
 #predict-button:hover {
-    opacity: 0.9;
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(99, 230, 190, 0.18);
 }
 
+#predict-button:active {
+    transform: translateY(0);
+}
+
+#predict-button:disabled {
+    cursor: wait;
+
+    opacity: 0.7;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+.button-icon {
+    font-size: 17px;
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
 .result {
-    margin-top: 25px;
-    padding: 25px;
-    border-radius: 14px;
-    background: #101319;
-    border: 1px solid #29313d;
+    position: relative;
+
+    overflow: hidden;
+
+    margin-top: 28px;
+
+    padding: 30px 24px;
+
+    border:
+        1px solid
+        rgba(99, 230, 190, 0.25);
+
+    border-radius: 18px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(99, 230, 190, 0.1),
+            transparent 60%
+        ),
+        #0d1418;
+
     text-align: center;
 }
 
-.result p {
-    color: #9da7b4;
-    margin-bottom: 8px;
+.result::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 12%;
+
+    right: 12%;
+
+    height: 1px;
+
+    background: var(--accent);
+
+    opacity: 0.5;
+}
+
+.result p:first-child {
+    margin-bottom: 9px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
 }
 
 .result strong {
-    font-size: 34px;
-    color: #63e6be;
+    display: block;
+
+    color: var(--accent);
+
+    font-size:
+        clamp(30px, 5vw, 46px);
+
+    line-height: 1.1;
+
+    letter-spacing: -1px;
 }
 
-.hidden {
-    display: none;
+.result-note {
+    margin-top: 12px;
+
+    color: #7f8b98;
+
+    font-size: 12px;
 }
 
-@media (max-width: 700px) {
+
+/* =========================================
+   ERROR
+========================================= */
+
+.error {
+    margin-top: 20px;
+
+    padding: 15px 17px;
+
+    border:
+        1px solid
+        rgba(255, 123, 123, 0.25);
+
+    border-radius: 11px;
+
+    background:
+        rgba(255, 123, 123, 0.06);
+
+    color: var(--danger);
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+.error strong {
+    display: block;
+
+    margin-bottom: 4px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 28px;
+
+    color: #65717e;
+
+    font-size: 12px;
+}
+
+.footer-separator {
+    color: var(--accent);
+
+    opacity: 0.6;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 760px) {
 
     .page {
-        padding: 40px 0;
+        width: min(94%, 620px);
+
+        padding: 35px 0 30px;
+    }
+
+    .hero {
+        margin-bottom: 28px;
+    }
+
+    .hero h1 {
+        font-size:
+            clamp(38px, 12vw, 58px);
+
+        letter-spacing: -1.5px;
+    }
+
+    .description {
+        font-size: 15px;
+    }
+
+    .prediction-card {
+        padding: 25px 20px;
+
+        border-radius: 18px;
     }
 
     .form-grid {
         grid-template-columns: 1fr;
+
+        gap: 17px;
+    }
+
+    .card-heading {
+        align-items: flex-start;
+    }
+
+    .prediction-card h2 {
+        font-size: 23px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 420px) {
+
+    .page {
+        width: 94%;
+
+        padding-top: 25px;
+    }
+
+    .hero h1 {
+        font-size: 39px;
     }
 
     .prediction-card {
-        padding: 25px;
+        padding: 21px 16px;
     }
 
+    .form-group input,
+    .form-group select {
+        min-height: 46px;
+    }
+
+    #predict-button {
+        min-height: 50px;
+    }
+
+    .footer {
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+    .footer-separator {
+        display: none;
+    }
 }
