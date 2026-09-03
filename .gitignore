@@ -63,3 +63,10 @@ old\ cells
 # Generated / local dataset directories
 dataset/candidates/
 dataset/processed/
+
+# Local historical development dump
+dump/
+
+# Python generated files
+__pycache__/
+*.py[cod]

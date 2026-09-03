@@ -1,0 +1,615 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Used Car Price Prediction project development dashboard"
+    >
+
+    <title>
+        Project Inspector
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'dumpviewer/css/style.css' %}"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+    <div>
+
+        <p class="eyebrow">
+            AIML PROJECT
+        </p>
+
+        <h1>
+            Project Inspector
+        </h1>
+
+        <p class="subtitle">
+            Code · Documentation · Git · GitHub · Dump Archive
+        </p>
+
+    </div>
+
+
+    <a
+        class="back-link"
+        href="/"
+    >
+        ← Main Predictor
+    </a>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <!-- ==================================================
+         PROJECT STATISTICS
+    =================================================== -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+            <span>Branch</span>
+            <strong id="branch">...</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>Commit</span>
+            <strong id="commit">...</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>Release</span>
+            <strong id="tag">...</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>Files</span>
+            <strong id="statFiles">...</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>Folders</span>
+            <strong id="statFolders">...</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>Project Size</span>
+            <strong id="statSize">...</strong>
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         GIT + GITHUB
+    =================================================== -->
+
+    <div class="two-column">
+
+
+        <!-- LOCAL GIT -->
+
+        <section class="panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        VERSION CONTROL
+                    </p>
+
+                    <h2>
+                        Local Git
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="refreshGit"
+                    type="button"
+                >
+                    Refresh
+                </button>
+
+            </div>
+
+
+            <div class="github-status">
+
+                <div class="github-row">
+                    <span>Branch</span>
+                    <strong id="gitBranch">...</strong>
+                </div>
+
+                <div class="github-row">
+                    <span>Commit</span>
+                    <strong id="gitCommit">...</strong>
+                </div>
+
+                <div class="github-row">
+                    <span>Latest Tag</span>
+                    <strong id="gitTag">...</strong>
+                </div>
+
+                <div class="github-row">
+                    <span>Working Tree</span>
+                    <strong id="gitWorkingTree">...</strong>
+                </div>
+
+                <div class="github-row">
+                    <span>Remote</span>
+                    <strong id="gitRemote">...</strong>
+                </div>
+
+                <div class="github-row">
+                    <span>Sync</span>
+                    <strong id="gitSync">...</strong>
+                </div>
+
+                <div class="github-row">
+                    <span>Git LFS</span>
+                    <strong id="gitLfs">...</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- LIVE GITHUB -->
+
+        <section class="panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        REMOTE REPOSITORY
+                    </p>
+
+                    <h2>
+                        GitHub
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="refreshGithub"
+                    type="button"
+                >
+                    Refresh
+                </button>
+
+            </div>
+
+
+            <div class="github-status">
+
+                <div class="github-row">
+                    <span>Status</span>
+                    <strong id="githubOnline">
+                        Checking...
+                    </strong>
+                </div>
+
+                <div class="github-row">
+                    <span>Repository</span>
+                    <strong id="githubRepo">
+                        Loading...
+                    </strong>
+                </div>
+
+                <div class="github-row">
+                    <span>Branch</span>
+                    <strong id="githubBranch">
+                        Loading...
+                    </strong>
+                </div>
+
+                <div class="github-row">
+                    <span>Visibility</span>
+                    <strong id="githubVisibility">
+                        Loading...
+                    </strong>
+                </div>
+
+                <div class="github-row">
+                    <span>Stars</span>
+                    <strong id="githubStars">
+                        -
+                    </strong>
+                </div>
+
+                <div class="github-row">
+                    <span>Forks</span>
+                    <strong id="githubForks">
+                        -
+                    </strong>
+                </div>
+
+                <div class="github-row">
+                    <span>Open Issues</span>
+                    <strong id="githubIssues">
+                        -
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <a
+                id="githubLink"
+                class="github-link"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                hidden
+            >
+                Open repository on GitHub →
+            </a>
+
+        </section>
+
+
+    </div>
+
+
+
+    <!-- ==================================================
+         HEALTH + DOCUMENTATION
+    =================================================== -->
+
+    <div class="two-column">
+
+
+        <!-- PROJECT HEALTH -->
+
+        <section class="panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        SYSTEM CHECK
+                    </p>
+
+                    <h2>
+                        Project Health
+                    </h2>
+
+                </div>
+
+                <strong
+                    id="healthPercentage"
+                    class="health-score"
+                >
+                    ...
+                </strong>
+
+            </div>
+
+
+            <div
+                id="healthList"
+                class="health-list"
+            >
+                Loading...
+            </div>
+
+        </section>
+
+
+
+        <!-- DOCUMENTATION -->
+
+        <section class="panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        DOCUMENTATION
+                    </p>
+
+                    <h2>
+                        Documentation Health
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="documentationList"
+                class="health-list"
+            >
+                Loading...
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+
+    <!-- ==================================================
+         PROJECT SEARCH
+    =================================================== -->
+
+    <section class="panel">
+
+        <div class="panel-heading">
+
+            <div>
+
+                <p class="eyebrow">
+                    SEARCH
+                </p>
+
+                <h2>
+                    Project Search
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <input
+            id="searchInput"
+            class="search-box"
+            type="text"
+            placeholder="Search files, folders and code..."
+            autocomplete="off"
+        >
+
+    </section>
+
+
+
+    <!-- ==================================================
+         PROJECT + DUMP
+    =================================================== -->
+
+    <div class="two-column">
+
+
+        <!-- CURRENT PROJECT -->
+
+        <section class="panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        CURRENT PROJECT
+                    </p>
+
+                    <h2>
+                        Project Files
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="refreshProject"
+                    type="button"
+                >
+                    Refresh
+                </button>
+
+            </div>
+
+
+            <div
+                id="projectTree"
+                class="file-tree"
+            >
+                Loading project...
+            </div>
+
+        </section>
+
+
+
+        <!-- DUMP ARCHIVE -->
+
+        <section class="panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        ARCHIVE
+                    </p>
+
+                    <h2>
+                        Dump Archive
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="refreshDump"
+                    type="button"
+                >
+                    Refresh
+                </button>
+
+            </div>
+
+
+            <div
+                id="dumpTree"
+                class="file-tree"
+            >
+                Loading archive...
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+
+    <!-- ==================================================
+         FILE VIEWER
+    =================================================== -->
+
+    <section class="panel">
+
+        <div class="panel-heading">
+
+            <div>
+
+                <p class="eyebrow">
+                    FILE VIEWER
+                </p>
+
+                <h2 id="selectedFile">
+                    Select a text file
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <pre id="fileContent">Choose a text file from the project tree.</pre>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         ACTIVITY LOG
+    =================================================== -->
+
+    <section class="panel">
+
+        <div class="panel-heading">
+
+            <div>
+
+                <p class="eyebrow">
+                    ACTIVITY
+                </p>
+
+                <h2>
+                    Development Activity
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <pre id="activityLog">{{ activity_log }}</pre>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         RELEASE HISTORY
+    =================================================== -->
+
+    <section class="panel">
+
+        <div class="panel-heading">
+
+            <div>
+
+                <p class="eyebrow">
+                    RELEASES
+                </p>
+
+                <h2>
+                    Git Release History
+                </h2>
+
+            </div>
+
+            <button
+                id="refreshReleases"
+                type="button"
+            >
+                Refresh
+            </button>
+
+        </div>
+
+
+        <div
+            id="releaseList"
+            class="release-list"
+        >
+            Loading releases...
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    Used Car Price Prediction
+    ·
+    Project Inspector
+    ·
+    v0.1.0
+
+</footer>
+
+
+
+<script
+    src="{% static 'dumpviewer/js/app.js' %}"
+></script>
+
+
+</body>
+
+</html>

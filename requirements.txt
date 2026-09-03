@@ -1,12 +1,37 @@
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
-xgboost
-joblib
-flask
-flask-cors
-jupyter
-notebook
-pytest
+# ============================================================
+# Used Car Price Prediction
+# Runtime + Machine Learning + Development Dependencies
+# ============================================================
+
+# -------------------------
+# Web backend
+# -------------------------
+Django==6.1
+
+# -------------------------
+# Machine Learning
+# -------------------------
+numpy==2.5.2
+pandas==3.0.5
+scikit-learn==1.6.1
+xgboost==3.4.1
+joblib==1.5.3
+
+# -------------------------
+# Data analysis / notebooks
+# -------------------------
+matplotlib==3.11.1
+seaborn==0.13.2
+jupyter==1.1.1
+notebook==7.6.2
+
+# -------------------------
+# HTTP / API communication
+# Used by the dynamic GitHub integration.
+# -------------------------
+requests==2.34.2
+
+# -------------------------
+# Testing
+# -------------------------
+pytest==9.1.1
