@@ -147,29 +147,41 @@ otherFields.forEach(field => {
  * =========================================
  * FORM SUBMISSION
  * =========================================
- *
- * Django performs the actual prediction.
- *
- * JavaScript only provides frontend
- * behavior and feedback.
  */
 
 if (form && predictButton) {
 
-    form.addEventListener("submit", () => {
+    form.addEventListener("submit", (event) => {
+
+        console.log("=== FORM SUBMIT ===");
+
+        const csrfToken =
+            form.querySelector(
+                'input[name="csrfmiddlewaretoken"]'
+            );
+
+        console.log("FORM:", form);
+        console.log("CSRF TOKEN:", csrfToken?.value);
+        console.log(
+            "FORM DATA:",
+            [...new FormData(form).entries()]
+        );
+
+        /*
+         * IMPORTANT:
+         * We do NOT call event.preventDefault().
+         *
+         * Therefore the browser performs the
+         * normal HTML POST to Django.
+         */
 
         predictButton.disabled = true;
 
         const icon =
-            predictButton.querySelector(
-                ".button-icon"
-            );
+            predictButton.querySelector(".button-icon");
 
         const text =
-            predictButton.querySelector(
-                ".button-text"
-            );
-
+            predictButton.querySelector(".button-text");
 
         if (icon) {
             icon.textContent = "⏳";

@@ -75,7 +75,7 @@
                  FORM
             ========================== -->
 
-            <form method="POST" id="prediction-form">
+            <form method="POST" action="/" id="prediction-form">
 
                 {% csrf_token %}
 
@@ -591,25 +591,212 @@
 
 
             <!-- =========================
-                 RESULT
+                 MODEL A vs MODEL B RESULT
             ========================== -->
 
-            {% if prediction %}
+            {% if model_a or model_b or model_a_error or model_b_error %}
 
             <div id="result" class="result">
 
-                <p>
-                    Estimated Value
+                <p class="comparison-title">
+                    MODEL A vs MODEL B
                 </p>
-
-                <strong id="predicted-price">
-                    ₹ {{ prediction|floatformat:0 }}
-                </strong>
 
                 <p class="result-note">
-                    Estimated using the trained Random Forest
-                    regression model.
+                    Comparing the trained Machine Learning model
+                    with the AI + current market research model.
                 </p>
+
+
+                <!-- =========================
+                     PREDICTION CARDS
+                ========================== -->
+
+                <div class="model-comparison">
+
+                    <!-- MODEL A -->
+
+                    <div class="model-card model-a-card">
+
+                        <p class="model-label">
+                            MODEL A
+                        </p>
+
+                        <h3>
+                            Trained ML Model
+                        </h3>
+
+                        {% if model_a %}
+
+                        <strong class="model-price">
+                            ₹ {{ model_a|floatformat:0 }}
+                        </strong>
+
+                        <p class="model-description">
+                            Local trained regression model using
+                            the project's historical training data.
+                        </p>
+
+                        {% else %}
+
+                        <p class="model-error">
+                            Model A prediction failed.
+                        </p>
+
+                        {% if model_a_error %}
+                        <p class="model-error-detail">
+                            {{ model_a_error }}
+                        </p>
+                        {% endif %}
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- MODEL B -->
+
+                    <div class="model-card model-b-card">
+
+                        <p class="model-label">
+                            MODEL B
+                        </p>
+
+                        <h3>
+                            AI + Internet Market Model
+                        </h3>
+
+                        {% if model_b %}
+
+                        <strong class="model-price">
+                            ₹ {{ model_b.estimated_price|floatformat:0 }}
+                        </strong>
+
+                        <p class="model-description">
+                            Gemini analyzes current market evidence
+                            gathered from the internet.
+                        </p>
+
+                        {% if model_b.confidence %}
+                        <p class="model-detail">
+                            <strong>Confidence:</strong>
+                            {{ model_b.confidence }}
+                        </p>
+                        {% endif %}
+
+                        {% if model_b.search_method %}
+                        <p class="model-detail">
+                            <strong>Search:</strong>
+                            {{ model_b.search_method }}
+                        </p>
+                        {% endif %}
+
+                        {% else %}
+
+                        <p class="model-error">
+                            Model B prediction failed.
+                        </p>
+
+                        {% if model_b_error %}
+                        <p class="model-error-detail">
+                            {{ model_b_error }}
+                        </p>
+                        {% endif %}
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     COMPARISON
+                ========================== -->
+
+                {% if comparison %}
+
+                <div class="comparison-summary">
+
+                    <p class="comparison-heading">
+                        Prediction Difference
+                    </p>
+
+                    <strong class="comparison-difference">
+                        ₹ {{ comparison.difference|floatformat:0 }}
+                    </strong>
+
+                    <p>
+                        <strong>
+                            {{ comparison.difference_percent|floatformat:2 }}%
+                        </strong>
+                        difference relative to Model A.
+                    </p>
+
+                    <p>
+                        <strong>Higher prediction:</strong>
+                        {{ comparison.higher_model }}
+                    </p>
+
+                </div>
+
+                {% endif %}
+
+
+                <!-- =========================
+                     MODEL B REASONING
+                ========================== -->
+
+                {% if model_b.reasoning %}
+
+                <div class="model-b-analysis">
+
+                    <p class="comparison-heading">
+                        Model B Market Analysis
+                    </p>
+
+                    <p>
+                        {{ model_b.reasoning }}
+                    </p>
+
+                </div>
+
+                {% endif %}
+
+
+                <!-- =========================
+                     MARKET SOURCES
+                ========================== -->
+
+                {% if model_b.sources %}
+
+                <div class="prediction-sources">
+
+                    <p class="comparison-heading">
+                        Market Sources
+                    </p>
+
+                    <ul>
+
+                        {% for source in model_b.sources %}
+
+                        <li>
+                            <a
+                                href="{{ source.url }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {{ source.title }}
+                            </a>
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+                {% endif %}
 
             </div>
 
