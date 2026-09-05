@@ -767,3 +767,134 @@ body {
         display: none;
     }
 }
+
+
+/* =========================================================
+   MODEL A vs MODEL B COMPARISON
+   ========================================================= */
+
+.model-comparison {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 24px;
+}
+
+.model-card {
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.18);
+}
+
+.model-a-card {
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+.model-b-card {
+    border-color: rgba(0, 255, 200, 0.35);
+}
+
+.model-label {
+    margin-bottom: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.model-card h3 {
+    margin: 0 0 14px;
+    font-size: 1rem;
+}
+
+.model-price {
+    display: block;
+    margin: 10px 0;
+    font-size: 2rem;
+}
+
+.model-description {
+    margin-top: 12px;
+    line-height: 1.5;
+    opacity: 0.75;
+}
+
+.model-detail {
+    margin-top: 10px;
+}
+
+.comparison-title {
+    margin-bottom: 4px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.comparison-summary {
+    margin-top: 20px;
+    padding: 22px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+}
+
+.comparison-heading {
+    margin-bottom: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.comparison-difference {
+    display: block;
+    margin: 8px 0;
+    font-size: 1.8rem;
+}
+
+.model-b-analysis {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 14px;
+    background: rgba(0, 255, 200, 0.04);
+    border: 1px solid rgba(0, 255, 200, 0.16);
+    line-height: 1.6;
+}
+
+.prediction-sources {
+    margin-top: 20px;
+}
+
+.prediction-sources ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.prediction-sources li {
+    margin-bottom: 8px;
+}
+
+.model-error {
+    margin-top: 15px;
+}
+
+.model-error-detail {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .model-comparison {
+        grid-template-columns: 1fr;
+    }
+
+    .model-price {
+        font-size: 1.7rem;
+    }
+
+}
