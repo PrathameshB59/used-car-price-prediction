@@ -19,6 +19,54 @@
 
     <main class="page">
 
+    <!-- =====================================================
+         PREDICTION LOADING OVERLAY
+         Shown while Django processes the prediction.
+    ====================================================== -->
+
+    <div id="prediction-loading" class="prediction-loading" aria-hidden="true">
+
+        <div class="loading-card">
+
+            <div class="loading-orbit">
+                <div class="loading-car">🚗</div>
+            </div>
+
+            <h2>Analyzing your car...</h2>
+
+            <p id="loading-message">
+                Preparing market prediction
+            </p>
+
+            <div class="loading-progress">
+                <span></span>
+            </div>
+
+            <div class="loading-steps">
+
+                <span class="loading-step active">
+                    <span class="step-dot"></span>
+                    Vehicle data
+                </span>
+
+                <span class="loading-step">
+                    <span class="step-dot"></span>
+                    ML prediction
+                </span>
+
+                <span class="loading-step">
+                    <span class="step-dot"></span>
+                    Market analysis
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
         <!-- =========================
              HERO SECTION
         ========================== -->
