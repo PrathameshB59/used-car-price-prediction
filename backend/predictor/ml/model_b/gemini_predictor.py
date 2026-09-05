@@ -6,42 +6,58 @@ from google.genai import types
 from tavily import TavilyClient
 
 
+# =========================================================
+# Gemini clients
+# =========================================================
+
 # ---------------------------------------------------------
-# Gemini client
+# Gemini clients
 # ---------------------------------------------------------
 
-gemini_client = genai.Client(
+primary_gemini_client = genai.Client(
     api_key=settings.GEMINI_API_KEY
 )
 
+backup_gemini_client = genai.Client(
+    api_key=settings.GEMINI_BACKUP_API_KEY
+)
 
-# ---------------------------------------------------------
+
+# =========================================================
 # Tavily client
-# ---------------------------------------------------------
+# =========================================================
 
 tavily_client = TavilyClient(
     api_key=settings.TAVILY_API_KEY
 )
 
 
-# ---------------------------------------------------------
+# =========================================================
 # Response schema
-# ---------------------------------------------------------
+# =========================================================
 
 RESPONSE_SCHEMA = {
     "type": "object",
     "properties": {
         "estimated_price": {
             "type": "number",
-            "description": "Estimated used car selling price in Indian Rupees."
+            "description": (
+                "Estimated used car selling price "
+                "in Indian Rupees."
+            ),
         },
         "confidence": {
             "type": "string",
-            "description": "Confidence level: Low, Medium, or High."
+            "description": (
+                "Confidence level: Low, Medium, or High."
+            ),
         },
         "reasoning": {
             "type": "string",
-            "description": "Short explanation of the estimate using the available market data."
+            "description": (
+                "Short explanation of the estimate "
+                "using the available market data."
+            ),
         },
         "sources": {
             "type": "array",
@@ -53,17 +69,19 @@ RESPONSE_SCHEMA = {
                     },
                     "url": {
                         "type": "string"
-                    }
+                    },
                 },
                 "required": [
                     "title",
-                    "url"
-                ]
-            }
+                    "url",
+                ],
+            },
         },
         "search_method": {
             "type": "string",
-            "description": "Search method used: gemini_google_search or tavily_fallback."
+            "description": (
+                "Search method used by Model B."
+            ),
         },
     },
     "required": [
@@ -76,15 +94,54 @@ RESPONSE_SCHEMA = {
 }
 
 
-# ---------------------------------------------------------
-# Build the common car prompt
-# ---------------------------------------------------------
+# =========================================================
+# Gemini generation helper
+# =========================================================
+
+def generate_json_response(
+    prompt,
+    model_name,
+    client,
+    tools=None,
+):
+    """
+    Generate a structured JSON response using Gemini.
+
+    client:
+        The Gemini account to use.
+
+    model_name:
+        The Gemini model to use.
+
+    tools:
+        Optional Gemini tools such as Google Search.
+    """
+
+    config_kwargs = {
+        "response_mime_type": "application/json",
+        "response_schema": RESPONSE_SCHEMA,
+    }
+
+    if tools:
+        config_kwargs["tools"] = tools
+
+    response = client.models.generate_content(
+        model=model_name,
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            **config_kwargs
+        ),
+    )
+
+    return response
+
+# =========================================================
+# Common Gemini prompt
+# =========================================================
 
 def build_prompt(car_data, web_data=""):
     """
-    Build the prompt used by Gemini.
-
-    web_data contains information collected from the internet.
+    Build the common prompt used by Gemini.
     """
 
     return f"""
@@ -103,6 +160,7 @@ Use current Indian used-car market information when available.
 Important instructions:
 
 1. Estimate a realistic selling price in Indian Rupees.
+
 2. Consider:
    - car age
    - kilometres driven
@@ -111,32 +169,44 @@ Important instructions:
    - ownership
    - brand/model demand
    - current used-car market prices
+
 3. Do not blindly copy one listing.
+
 4. Compare multiple market signals when available.
+
 5. Give a short explanation for the estimate.
+
 6. Return ONLY JSON matching the requested schema.
 """
 
 
-# ---------------------------------------------------------
-# Primary method:
+# =========================================================
 # Gemini + Google Search
-# ---------------------------------------------------------
+# =========================================================
 
-def predict_with_gemini_search(car_data):
+def predict_with_gemini_search(
+    car_data,
+    client,
+    model_name,
+):
     """
-    Primary prediction method.
+    Ask a specific Gemini account/model to perform
+    the prediction using Google Search grounding.
 
-    Gemini performs the search itself using Google Search grounding.
+    This function receives the client and model explicitly.
+
+    That is important because we have TWO Gemini accounts.
     """
 
     prompt = build_prompt(
         car_data,
         """
-Gemini has access to Google Search grounding.
+Use Google Search grounding to search the web for
+relevant current Indian used-car prices.
 
-Search the web for relevant current used-car prices
-and use those results in your analysis.
+Search multiple sources when possible.
+
+Use the search results as market evidence.
 """
     )
 
@@ -144,38 +214,35 @@ and use those results in your analysis.
         google_search=types.GoogleSearch()
     )
 
-    response = gemini_client.models.generate_content(
-        model=settings.GEMINI_MODEL,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            tools=[grounding_tool],
-            response_mime_type="application/json",
-            response_schema=RESPONSE_SCHEMA,
-        ),
+    response = generate_json_response(
+        prompt=prompt,
+        model_name=model_name,
+        tools=[grounding_tool],
+        client=client,
     )
 
     result = json.loads(response.text)
-    result["search_method"] = "gemini_google_search"
+
+    result["search_method"] = (
+        "gemini_google_search"
+    )
 
     return result
 
 
-# ---------------------------------------------------------
-# Fallback method:
-# Tavily Search -> Gemini
-# ---------------------------------------------------------
+# =========================================================
+# Tavily fallback
+# =========================================================
 
 def predict_with_tavily_fallback(car_data):
     """
-    Fallback prediction method.
+    Fallback prediction strategy:
 
-    Strategy:
-
-    1. Search multiple market queries using Tavily.
-    2. Collect results from different search angles.
-    3. Remove duplicate and weak sources.
-    4. Give the cleaned market evidence to Gemini.
-    5. Gemini produces the final price estimate.
+    1. Search the used-car market with Tavily.
+    2. Collect multiple market sources.
+    3. Remove duplicate/weak sources.
+    4. Send the evidence to the backup Gemini account.
+    5. Gemini produces the final estimate.
     """
 
     brand = car_data.get("Brand", "")
@@ -183,13 +250,13 @@ def predict_with_tavily_fallback(car_data):
     year = car_data.get("Year", "")
     km_driven = car_data.get("kmDriven", "")
 
-    # -----------------------------------------------------
-    # Build multiple search queries
-    # -----------------------------------------------------
-
     fuel_type = car_data.get("FuelType", "")
     transmission = car_data.get("Transmission", "")
     owner = car_data.get("Owner", "")
+
+    # -----------------------------------------------------
+    # Build search queries
+    # -----------------------------------------------------
 
     queries = [
         (
@@ -208,14 +275,16 @@ def predict_with_tavily_fallback(car_data):
     ]
 
     # -----------------------------------------------------
-    # Search Tavily
+    # Tavily search
     # -----------------------------------------------------
 
     all_results = []
 
     for query in queries:
 
-        print(f"Tavily search: {query}")
+        print(
+            f"Tavily search: {query}"
+        )
 
         search_response = tavily_client.search(
             query=query,
@@ -223,18 +292,18 @@ def predict_with_tavily_fallback(car_data):
             search_depth="advanced",
         )
 
-        results = search_response.get("results", [])
+        results = search_response.get(
+            "results",
+            []
+        )
 
         all_results.extend(results)
 
     # -----------------------------------------------------
-    # Clean and deduplicate results
+    # Clean and deduplicate
     # -----------------------------------------------------
 
-    fuel_type = car_data.get("FuelType", "")
-
     seen_urls = set()
-
     cleaned_results = []
 
     weak_domains = [
@@ -245,31 +314,47 @@ def predict_with_tavily_fallback(car_data):
 
     for result in all_results:
 
-        title = result.get("title", "").strip()
-        url = result.get("url", "").strip()
-        content = result.get("content", "").strip()
+        title = result.get(
+            "title",
+            ""
+        ).strip()
 
-        # 1. Skip results without URL
+        url = result.get(
+            "url",
+            ""
+        ).strip()
+
+        content = result.get(
+            "content",
+            ""
+        ).strip()
+
+        # Skip results without URL
         if not url:
             continue
 
-        # 2. Skip duplicate URLs
+        # Skip duplicate URLs
         if url in seen_urls:
             continue
 
-        # 3. Skip weak/social sources
-        if any(domain in url.lower() for domain in weak_domains):
+        # Skip social media sources
+        if any(
+            domain in url.lower()
+            for domain in weak_domains
+        ):
             continue
 
-        # 4. Skip results without content
+        # Skip results without useful content
         if not content:
             continue
 
         # -------------------------------------------------
-        # 5. Remove obvious fuel-type mismatches
+        # Remove obvious fuel mismatches
         # -------------------------------------------------
 
-        text = f"{title} {content}".lower()
+        text = (
+            f"{title} {content}"
+        ).lower()
 
         if fuel_type:
 
@@ -280,12 +365,11 @@ def predict_with_tavily_fallback(car_data):
                 "diesel": "petrol",
             }.get(fuel_lower)
 
-            if opposite_fuel and opposite_fuel in text:
+            if (
+                opposite_fuel
+                and opposite_fuel in text
+            ):
                 continue
-
-        # -------------------------------------------------
-        # Result passed all filters
-        # -------------------------------------------------
 
         seen_urls.add(url)
 
@@ -293,11 +377,14 @@ def predict_with_tavily_fallback(car_data):
             "title": title,
             "url": url,
             "content": content,
-            "score": result.get("score", 0),
+            "score": result.get(
+                "score",
+                0
+            ),
         })
 
     # -----------------------------------------------------
-    # Sort by Tavily relevance score
+    # Sort by Tavily relevance
     # -----------------------------------------------------
 
     cleaned_results.sort(
@@ -305,18 +392,35 @@ def predict_with_tavily_fallback(car_data):
         reverse=True,
     )
 
-    # Keep the strongest evidence
+    # Keep strongest 10 sources
     cleaned_results = cleaned_results[:10]
-    
-    print("\n========== FINAL TAVILY EVIDENCE ==========")
 
-    for i, result in enumerate(cleaned_results, 1):
-        print(f"\n{i}. SCORE: {result['score']}")
-        print("TITLE:", result["title"])
-        print("URL:", result["url"])
+    print(
+        "\n========== FINAL TAVILY EVIDENCE =========="
+    )
+
+    for i, result in enumerate(
+        cleaned_results,
+        1
+    ):
+
+        print(
+            f"\n{i}. SCORE: "
+            f"{result['score']}"
+        )
+
+        print(
+            "TITLE:",
+            result["title"]
+        )
+
+        print(
+            "URL:",
+            result["url"]
+        )
 
     # -----------------------------------------------------
-    # Convert search results into Gemini evidence
+    # Convert evidence for Gemini
     # -----------------------------------------------------
 
     web_data_parts = []
@@ -341,10 +445,12 @@ Market Information:
             "url": result["url"],
         })
 
-    web_data = "\n".join(web_data_parts)
+    web_data = "\n".join(
+        web_data_parts
+    )
 
     # -----------------------------------------------------
-    # Ask Gemini to analyze the market evidence
+    # Ask backup Gemini to analyze Tavily evidence
     # -----------------------------------------------------
 
     prompt = build_prompt(
@@ -372,21 +478,29 @@ MARKET EVIDENCE:
 """
     )
 
-    response = gemini_client.models.generate_content(
-        model=settings.GEMINI_MODEL,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            response_schema=RESPONSE_SCHEMA,
-        ),
+    response = generate_json_response(
+        prompt=prompt,
+        model_name=settings.GEMINI_BACKUP_MODEL,
+        client=backup_gemini_client,
     )
 
-    result = json.loads(response.text)
+    result = json.loads(
+        response.text
+    )
+
+    result["search_method"] = (
+        "tavily_fallback"
+    )
+
+    result["model_used"] = (
+        settings.GEMINI_BACKUP_MODEL
+    )
+
+    result["fallback_used"] = True
 
     # -----------------------------------------------------
-    # Important:
-    # Keep URLs returned by Tavily.
-    # Do not allow Gemini to invent source URLs.
+    # Keep Tavily's real URLs.
+    # Do not allow Gemini to invent URLs.
     # -----------------------------------------------------
 
     result["sources"] = sources
@@ -394,41 +508,142 @@ MARKET EVIDENCE:
     return result
 
 
-# ---------------------------------------------------------
-# Main prediction function
-# ---------------------------------------------------------
+# =========================================================
+# Main Model B prediction
+# =========================================================
 
 def predict_with_gemini(car_data):
     """
-    Predict used-car price.
+    Predict used-car price using Model B.
 
-    Strategy:
+    Fallback order:
 
-    1. Try Gemini + Google Search.
-    2. If that fails, use Tavily Search.
-    3. Give Tavily results to Gemini.
+    1. Primary Gemini account + Google Search
+    2. Backup Gemini account + Google Search
+    3. Tavily + backup Gemini
+
+    Both Gemini accounts use the same model:
+    gemini-3.6-flash
+
+    The API keys are different, so if the primary account
+    hits a quota/rate-limit/problem, the backup account
+    can be used.
     """
 
+    primary_model = settings.GEMINI_MODEL
+    backup_model = settings.GEMINI_BACKUP_MODEL
+
+    # -----------------------------------------------------
+    # 1. PRIMARY GEMINI ACCOUNT
+    # -----------------------------------------------------
+
     try:
-        print("Trying Gemini Google Search...")
 
-        result = predict_with_gemini_search(car_data)
+        print()
+        print("=" * 60)
+        print("MODEL B: PRIMARY GEMINI")
+        print("=" * 60)
 
-        print("Gemini Google Search succeeded.")
+        print(
+            f"Primary model: {primary_model}"
+        )
+
+        result = predict_with_gemini_search(
+            car_data,
+            primary_gemini_client,
+            primary_model,
+        )
+
+        result["model_used"] = primary_model
+        result["fallback_used"] = False
+        result["account_used"] = "primary"
+
+        print(
+            f"Primary Gemini succeeded: "
+            f"{primary_model}"
+        )
 
         return result
 
-    except Exception as gemini_search_error:
+    except Exception as primary_error:
 
+        print()
         print(
-            "Gemini Google Search failed:"
-        )
-        print(
-            gemini_search_error
-        )
-
-        print(
-            "Switching to Tavily search fallback..."
+            f"Primary Gemini failed "
+            f"({primary_model})"
         )
 
-        return predict_with_tavily_fallback(car_data)
+        print(
+            f"Error: {primary_error}"
+        )
+
+    # -----------------------------------------------------
+    # 2. BACKUP GEMINI ACCOUNT
+    # -----------------------------------------------------
+
+    try:
+
+        print()
+        print("=" * 60)
+        print("MODEL B: BACKUP GEMINI")
+        print("=" * 60)
+
+        print(
+            f"Backup model: {backup_model}"
+        )
+
+        result = predict_with_gemini_search(
+            car_data,
+            backup_gemini_client,
+            backup_model,
+        )
+
+        result["model_used"] = backup_model
+        result["fallback_used"] = True
+        result["account_used"] = "backup"
+
+        print(
+            f"Backup Gemini succeeded: "
+            f"{backup_model}"
+        )
+
+        return result
+
+    except Exception as backup_error:
+
+        print()
+        print(
+            f"Backup Gemini failed "
+            f"({backup_model})"
+        )
+
+        print(
+            f"Error: {backup_error}"
+        )
+
+    # -----------------------------------------------------
+    # 3. TAVILY FALLBACK
+    # -----------------------------------------------------
+
+    print()
+    print("=" * 60)
+    print("MODEL B: TAVILY FALLBACK")
+    print("=" * 60)
+
+    print(
+        "Both Gemini accounts failed."
+    )
+
+    print(
+        "Switching to Tavily market research."
+    )
+
+    result = predict_with_tavily_fallback(
+        car_data
+    )
+
+    result["model_used"] = "tavily"
+    result["fallback_used"] = True
+    result["account_used"] = "tavily"
+
+    return result

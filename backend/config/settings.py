@@ -26,16 +26,19 @@ load_dotenv(ENV_FILE)
 # ---------------------------------------------------------
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY", "")
+GEMINI_BACKUP_API_KEY = os.environ.get("GEMINI_BACKUP_API_KEY", "")
 
 GEMINI_MODEL = os.environ.get(
     "GEMINI_MODEL",
-    ""
+    "gemini-3.6-flash",
 )
 
-GEMINI_API_TIMEOUT = int(
-    os.environ.get("GEMINI_API_TIMEOUT", "30")
+GEMINI_BACKUP_MODEL = os.environ.get(
+    "GEMINI_BACKUP_MODEL",
+    "gemini-3.6-flash",
 )
+
+TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY", "")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
