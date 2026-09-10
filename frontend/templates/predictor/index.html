@@ -275,7 +275,10 @@
              PREDICTION CARD
         ========================== -->
 
-        <section class="prediction-card">
+        <section
+            class="prediction-card"
+            id="predict"
+        >
 
             <div class="card-heading">
 
@@ -820,7 +823,11 @@
 
             {% if model_a or model_b or model_a_error or model_b_error %}
 
-            <div id="result" class="result">
+            <div
+                id="results"
+                class="result-anchor"
+                aria-hidden="true"
+            ></div>
 
                 <p class="comparison-title">
                     MODEL A vs MODEL B
@@ -836,7 +843,10 @@
                      PREDICTION CARDS
                 ========================== -->
 
-                <div class="model-comparison">
+                <div
+                    id="compare"
+                    class="model-comparison"
+                >
 
                     <!-- MODEL A -->
 
