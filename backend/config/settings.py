@@ -12,9 +12,33 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Load environment variables from the project root .env file.
+ENV_FILE = BASE_DIR.parent / ".env"
+load_dotenv(ENV_FILE)
+
+# ---------------------------------------------------------
+# Model B - Gemini + Tavily
+# ---------------------------------------------------------
+
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+GEMINI_BACKUP_API_KEY = os.environ.get("GEMINI_BACKUP_API_KEY", "")
+
+GEMINI_MODEL = os.environ.get(
+    "GEMINI_MODEL",
+    "gemini-3.6-flash",
+)
+
+GEMINI_BACKUP_MODEL = os.environ.get(
+    "GEMINI_BACKUP_MODEL",
+    "gemini-3.6-flash",
+)
+
+TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY", "")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/

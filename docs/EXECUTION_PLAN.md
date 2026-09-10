@@ -26,57 +26,33 @@
 
 ### Goal
 
-Build a second valuation path that combines the existing ML estimate with current-market evidence.
+Build a second valuation path that combines the existing Model A ML estimate with current Indian used-car market evidence.
 
-### Planned Architecture
+Model B is designed as an AI-assisted market research pipeline rather than a model that blindly asks an LLM to invent a price.
 
-```text
-                    User Input
-                       │
-             ┌─────────┴─────────┐
-             ↓                   ↓
-        Model A ML          Model B Pipeline
-             │                   │
-             │            AI model selection
-             │                   ↓
-             │          Web/current listings
-             │                   +
-             │          Official manufacturer info
-             │                   ↓
-             │          Structured evidence
-             │                   ↓
-             │          Python statistics
-             │                   ↓
-             └──────────┬────────┘
-                        ↓
-                 Separate results
-                        ↓
-             Model A | Model B
-```
-
-Model B should not blindly let an AI model invent a price. Extracted market evidence should be validated and statistical calculations should be performed in Python.
-
-### Planned AI Selection
-
-Default:
+### Current Architecture
 
 ```text
-Gemini 2.5 Flash
-```
-
-Experimental:
-
-```text
-Gemini 3.6 Flash
-```
-
-Additional models can be added later through configuration.
-
-## v1.0.0 — Final Project
-
-- [ ] Model A + Model B fully integrated
-- [ ] End-to-end testing
-- [ ] Public documentation
-- [ ] Final UI polish
-- [ ] Viva explanation
-- [ ] Final presentation/demo
+                         User Input
+                             │
+                  ┌──────────┴──────────┐
+                  ↓                     ↓
+             Model A ML            Model B Pipeline
+                  │                     │
+                  │              Gemini AI analysis
+                  │                     │
+                  │              Current-market search
+                  │                     │
+                  │                  Tavily
+                  │                     │
+                  │              Structured evidence
+                  │                     │
+                  │              Python validation /
+                  │               statistical logic
+                  │                     │
+                  └──────────┬──────────┘
+                             ↓
+                     Separate results
+                             ↓
+                   Model A | Model B
+{ _ble_edit_exec_gexec__save_lastarg "$@"; } 4>&1 5>&2 &>/dev/null

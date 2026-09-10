@@ -1,5 +1,38 @@
 # Changelog
 
+---
+
+## 2026-09-05 — Model B Development
+
+### Completed
+
+- Model B Gemini integration added to the project.
+- Tavily API configuration added as the web-search fallback for Model B.
+- Gemini model selection made configurable through environment variables.
+- Gemini API timeout configuration added.
+- Django CSRF/form submission issue investigated and fixed.
+- Normal Django POST prediction flow verified.
+- Prediction form explicitly posts to `/`.
+- Initial animated prediction flow implemented.
+- Model A + Model B comparison flow integrated into the frontend.
+- Local project backup created before the next UI redesign.
+
+### Current Prediction Flow
+
+```text
+User enters car details
+        ↓
+Prediction form
+        ↓
+Loading / prediction animation
+        ↓
+Django backend
+        ↓
+Model A + Model B
+        ↓
+Comparison
+```
+
 ## v0.1.0 — Model A Web MVP
 
 ### Completed

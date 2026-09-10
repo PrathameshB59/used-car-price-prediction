@@ -32,6 +32,15 @@ notebook==7.6.2
 requests==2.34.2
 
 # -------------------------
+# External AI / Search APIs
+# Model B dependencies
+# -------------------------
+google-genai==2.22.0
+groq==1.7.0
+tavily-python==0.8.1
+
+# -------------------------
 # Testing
 # -------------------------
 pytest==9.1.1
+python-dotenv==1.2.3
