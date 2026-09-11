@@ -1,0 +1,529 @@
+<section class="how-it-works-page">
+
+    <!-- PAGE HEADER -->
+
+    <div class="how-hero">
+
+        <p class="page-eyebrow">
+            AUTOVALUE AI
+        </p>
+
+        <h1>
+            How the valuation works
+        </h1>
+
+        <p class="page-subtitle">
+            Two different approaches evaluate the same used car:
+            a trained Machine Learning model and an
+            AI-powered market analysis pipeline.
+        </p>
+
+    </div>
+
+
+    <!-- OVERVIEW -->
+
+    <div class="workflow-overview">
+
+        <div class="workflow-step">
+            <span class="workflow-number">01</span>
+
+            <h3>
+                User Input
+            </h3>
+
+            <p>
+                Vehicle details are entered into the prediction form.
+            </p>
+        </div>
+
+
+        <div class="workflow-arrow">
+            →
+        </div>
+
+
+        <div class="workflow-step">
+            <span class="workflow-number">02</span>
+
+            <h3>
+                Two Valuation Paths
+            </h3>
+
+            <p>
+                The same vehicle information is evaluated by
+                Model A and Model B.
+            </p>
+        </div>
+
+
+        <div class="workflow-arrow">
+            →
+        </div>
+
+
+        <div class="workflow-step">
+            <span class="workflow-number">03</span>
+
+            <h3>
+                Compare
+            </h3>
+
+            <p>
+                The two estimates are displayed side by side.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- MODEL A -->
+
+    <article class="how-model-card model-a-explanation">
+
+        <div class="how-model-header">
+
+            <div>
+                <p class="model-label">
+                    MODEL A
+                </p>
+
+                <h2>
+                    Trained Machine Learning Model
+                </h2>
+            </div>
+
+            <span class="model-badge">
+                RANDOM FOREST
+            </span>
+
+        </div>
+
+
+        <p class="how-model-intro">
+            Model A is the traditional Machine Learning valuation
+            path. It uses the trained Random Forest regression model
+            learned from historical used-car data.
+        </p>
+
+
+        <div class="how-flow">
+
+            <div class="flow-box">
+                <strong>User Input</strong>
+
+                <span>
+                    Car details
+                </span>
+            </div>
+
+            <div class="flow-line">
+                ↓
+            </div>
+
+            <div class="flow-box">
+                <strong>Preprocessing</strong>
+
+                <span>
+                    Saved preprocessing pipeline
+                </span>
+            </div>
+
+            <div class="flow-line">
+                ↓
+            </div>
+
+            <div class="flow-box">
+                <strong>Random Forest</strong>
+
+                <span>
+                    Trained regression model
+                </span>
+            </div>
+
+            <div class="flow-line">
+                ↓
+            </div>
+
+            <div class="flow-box flow-result">
+                <strong>Model A Price</strong>
+
+                <span>
+                    ML estimated value
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="how-detail-grid">
+
+            <div>
+                <h3>
+                    Features used
+                </h3>
+
+                <ul>
+                    <li>Brand</li>
+                    <li>Model</li>
+                    <li>Manufacturing Year</li>
+                    <li>Vehicle Age</li>
+                    <li>Kilometers Driven</li>
+                    <li>Transmission</li>
+                    <li>Owner</li>
+                    <li>Fuel Type</li>
+                </ul>
+            </div>
+
+
+            <div>
+                <h3>
+                    Why preprocessing matters
+                </h3>
+
+                <p>
+                    The deployed application reuses the saved
+                    preprocessing pipeline from training rather than
+                    manually recreating the transformations in Django.
+                </p>
+
+                <p class="learning-note">
+                    Training:
+                    data → preprocessing → model
+                </p>
+
+                <p class="learning-note">
+                    Prediction:
+                    user input → saved preprocessing → model
+                </p>
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- MODEL B -->
+
+    <article class="how-model-card model-b-explanation">
+
+        <div class="how-model-header">
+
+            <div>
+                <p class="model-label">
+                    MODEL B
+                </p>
+
+                <h2>
+                    AI + Internet Market Model
+                </h2>
+            </div>
+
+            <span class="model-badge">
+                GEMINI + SEARCH
+            </span>
+
+        </div>
+
+
+        <p class="how-model-intro">
+            Model B is an AI-assisted market research pipeline.
+            Instead of relying only on historical training data,
+            it analyzes current Indian used-car market evidence.
+        </p>
+
+
+        <div class="how-flow">
+
+            <div class="flow-box">
+                <strong>User Input</strong>
+
+                <span>
+                    Same vehicle details
+                </span>
+            </div>
+
+            <div class="flow-line">
+                ↓
+            </div>
+
+            <div class="flow-box">
+                <strong>Gemini AI</strong>
+
+                <span>
+                    Market analysis
+                </span>
+            </div>
+
+            <div class="flow-line">
+                ↓
+            </div>
+
+            <div class="flow-box">
+                <strong>Market Evidence</strong>
+
+                <span>
+                    Current web/search information
+                </span>
+            </div>
+
+            <div class="flow-line">
+                ↓
+            </div>
+
+            <div class="flow-box flow-result">
+                <strong>Model B Price</strong>
+
+                <span>
+                    Market-informed estimate
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="fallback-panel">
+
+            <p class="fallback-label">
+                SEARCH / FALLBACK PIPELINE
+            </p>
+
+            <div class="fallback-flow">
+
+                <span>
+                    Gemini
+                </span>
+
+                <span>
+                    →
+                </span>
+
+                <span>
+                    Market Search
+                </span>
+
+                <span>
+                    →
+                </span>
+
+                <span>
+                    Tavily fallback
+                </span>
+
+                <span>
+                    →
+                </span>
+
+                <span>
+                    Evidence
+                </span>
+
+            </div>
+
+            <p>
+                When the primary search path is unavailable,
+                the project can use Tavily to obtain current
+                market evidence for the Model B analysis.
+            </p>
+
+        </div>
+
+
+        <div class="how-detail-grid">
+
+            <div>
+                <h3>
+                    What Model B looks at
+                </h3>
+
+                <ul>
+                    <li>Vehicle identity and specifications</li>
+                    <li>Current used-car market evidence</li>
+                    <li>Comparable market listings</li>
+                    <li>Market context</li>
+                    <li>Evidence gathered from search</li>
+                </ul>
+            </div>
+
+
+            <div>
+                <h3>
+                    What it produces
+                </h3>
+
+                <ul>
+                    <li>Estimated market price</li>
+                    <li>Confidence information</li>
+                    <li>Search method</li>
+                    <li>Market reasoning</li>
+                    <li>Supporting evidence / sources</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- COMPARISON -->
+
+    <article class="comparison-explanation">
+
+        <p class="page-eyebrow">
+            FINAL STAGE
+        </p>
+
+        <h2>
+            Model A vs Model B
+        </h2>
+
+        <p>
+            The project does not replace the Machine Learning model
+            with the AI model. Both approaches are kept separate so
+            their estimates can be compared.
+        </p>
+
+
+        <div class="comparison-flow">
+
+            <div class="comparison-model">
+                <span>
+                    MODEL A
+                </span>
+
+                <strong>
+                    Historical ML estimate
+                </strong>
+            </div>
+
+
+            <div class="comparison-symbol">
+                VS
+            </div>
+
+
+            <div class="comparison-model">
+                <span>
+                    MODEL B
+                </span>
+
+                <strong>
+                    Current market estimate
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div class="comparison-output">
+
+            <h3>
+                The application calculates
+            </h3>
+
+            <div class="comparison-items">
+
+                <div>
+                    <strong>
+                        Price Difference
+                    </strong>
+
+                    <span>
+                        Absolute difference between the estimates
+                    </span>
+                </div>
+
+                <div>
+                    <strong>
+                        Difference %
+                    </strong>
+
+                    <span>
+                        Difference relative to Model A
+                    </span>
+                </div>
+
+                <div>
+                    <strong>
+                        Higher Prediction
+                    </strong>
+
+                    <span>
+                        Which model produced the higher estimate
+                    </span>
+                </div>
+
+                <div>
+                    <strong>
+                        Model B Analysis
+                    </strong>
+
+                    <span>
+                        Market reasoning and supporting evidence
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- LEARNING -->
+
+    <section class="learning-section">
+
+        <p class="page-eyebrow">
+            AIML LEARNING
+        </p>
+
+        <h2>
+            Why use two approaches?
+        </h2>
+
+        <p>
+            Model A demonstrates supervised Machine Learning using
+            a trained regression model. Model B demonstrates how
+            an AI system can combine language-model reasoning with
+            current market evidence.
+        </p>
+
+        <div class="learning-grid">
+
+            <div>
+                <strong>
+                    Model A
+                </strong>
+
+                <span>
+                    Learns patterns from historical training data.
+                </span>
+            </div>
+
+            <div>
+                <strong>
+                    Model B
+                </strong>
+
+                <span>
+                    Uses AI reasoning and current market evidence.
+                </span>
+            </div>
+
+            <div>
+                <strong>
+                    Comparison
+                </strong>
+
+                <span>
+                    Shows how historical ML estimation differs from
+                    market-informed valuation.
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+</section>

@@ -823,11 +823,7 @@
 
             {% if model_a or model_b or model_a_error or model_b_error %}
 
-            <div
-                id="results"
-                class="result-anchor"
-                aria-hidden="true"
-            ></div>
+            <div id="result" class="result">
 
                 <p class="comparison-title">
                     MODEL A vs MODEL B
@@ -1061,6 +1057,10 @@
 
     </main>
 
+
+    <script
+        src="{% static 'predictor/js/pages/how-it-works.js' %}"
+    ></script>
 
     <script
         src="{% static 'predictor/js/script.js' %}"

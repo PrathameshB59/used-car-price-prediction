@@ -2391,3 +2391,345 @@ body {
     }
 
 }
+
+
+/* =========================================================
+   HOW IT WORKS PAGE
+   ========================================================= */
+
+.how-it-works-page {
+    width: min(1100px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 64px 0 100px;
+}
+
+.how-hero {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 55px;
+}
+
+.how-hero h1 {
+    margin: 12px 0 18px;
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.05;
+}
+
+.page-eyebrow {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #18d8c0;
+}
+
+.page-subtitle,
+.how-model-intro,
+.comparison-explanation > p,
+.learning-section > p {
+    color: #8d9ab0;
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+
+/* Workflow */
+
+.workflow-overview {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 18px;
+    align-items: center;
+    margin-bottom: 55px;
+}
+
+.workflow-step {
+    padding: 26px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 18px;
+    background: rgba(15,22,40,.8);
+}
+
+.workflow-number {
+    display: block;
+    color: #18d8c0;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.workflow-step h3 {
+    margin: 0 0 10px;
+}
+
+.workflow-step p {
+    color: #8794a9;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.workflow-arrow {
+    font-size: 28px;
+    color: #18d8c0;
+    text-align: center;
+}
+
+
+/* Model cards */
+
+.how-model-card,
+.comparison-explanation,
+.learning-section {
+    margin-top: 30px;
+    padding: 38px;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,.08);
+    background: #0f1628;
+}
+
+.how-model-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+}
+
+.how-model-header h2,
+.comparison-explanation h2,
+.learning-section h2 {
+    margin: 8px 0 0;
+    font-size: 30px;
+}
+
+.model-badge {
+    padding: 9px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(24,216,192,.3);
+    color: #18d8c0;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+
+/* Flow */
+
+.how-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    gap: 12px;
+    align-items: center;
+    margin: 32px 0;
+}
+
+.flow-box {
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 18px;
+    border-radius: 16px;
+    background: #111a2e;
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+.flow-box strong {
+    font-size: 16px;
+}
+
+.flow-box span {
+    margin-top: 8px;
+    color: #7f8ca2;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.flow-result {
+    border-color: rgba(24,216,192,.35);
+}
+
+.flow-line {
+    color: #18d8c0;
+    font-size: 22px;
+}
+
+
+/* Details */
+
+.how-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.how-detail-grid h3 {
+    margin-top: 0;
+}
+
+.how-detail-grid p,
+.how-detail-grid li,
+.fallback-panel p {
+    color: #8996aa;
+    line-height: 1.7;
+}
+
+.how-detail-grid ul {
+    padding-left: 20px;
+}
+
+
+/* Learning notes */
+
+.learning-note {
+    padding: 12px 15px;
+    border-left: 2px solid #18d8c0;
+    background: rgba(24,216,192,.04);
+}
+
+
+/* Fallback */
+
+.fallback-panel {
+    margin-top: 30px;
+    padding: 24px;
+    border-radius: 18px;
+    background: #0b1222;
+    border: 1px solid rgba(255,255,255,.07);
+}
+
+.fallback-label {
+    color: #18d8c0 !important;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.fallback-flow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.fallback-flow span {
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: #121d32;
+    color: #c5cedd;
+}
+
+
+/* Comparison */
+
+.comparison-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.comparison-model {
+    padding: 28px;
+    border-radius: 18px;
+    background: #111a2e;
+    text-align: center;
+}
+
+.comparison-model span {
+    display: block;
+    color: #18d8c0;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.comparison-model strong {
+    font-size: 18px;
+}
+
+.comparison-symbol {
+    font-weight: 900;
+    color: #7d899e;
+}
+
+.comparison-output {
+    margin-top: 30px;
+}
+
+.comparison-items,
+.learning-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.comparison-items > div,
+.learning-grid > div {
+    padding: 20px;
+    border-radius: 15px;
+    background: #111a2e;
+}
+
+.comparison-items strong,
+.learning-grid strong {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.comparison-items span,
+.learning-grid span {
+    display: block;
+    color: #7f8ca2;
+    line-height: 1.6;
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .how-it-works-page {
+        width: min(100% - 28px, 700px);
+        padding-top: 35px;
+    }
+
+    .workflow-overview {
+        grid-template-columns: 1fr;
+    }
+
+    .workflow-arrow {
+        transform: rotate(90deg);
+    }
+
+    .how-flow {
+        grid-template-columns: 1fr;
+    }
+
+    .flow-line {
+        transform: rotate(90deg);
+    }
+
+    .how-detail-grid,
+    .comparison-items,
+    .learning-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .how-model-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .comparison-flow {
+        grid-template-columns: 1fr;
+    }
+
+    .comparison-symbol {
+        text-align: center;
+    }
+}

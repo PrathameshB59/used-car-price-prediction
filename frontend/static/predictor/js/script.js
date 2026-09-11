@@ -313,7 +313,7 @@
             </section>
         `;
         document.body.classList.add("stage-active");
-        setHash("result");
+        setHash("results");
         document.getElementById("new-prediction")?.addEventListener("click", restoreForm);
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -395,4 +395,34 @@
     }
 
     bootForm();
+})();
+
+(function () {
+    "use strict";
+
+    function setupFrontendPages() {
+        const howItWorksLinks = document.querySelectorAll(
+            'a[href="#how-it-works"], [data-page="how-it-works"]'
+        );
+
+        if (!howItWorksLinks.length) {
+            return;
+        }
+
+        howItWorksLinks.forEach((link) => {
+            link.addEventListener("click", async (event) => {
+                event.preventDefault();
+
+                if (window.initHowItWorksPage) {
+                    await window.initHowItWorksPage();
+                }
+            });
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", setupFrontendPages);
+    } else {
+        setupFrontendPages();
+    }
 })();
