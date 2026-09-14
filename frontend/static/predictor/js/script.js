@@ -313,7 +313,7 @@
             </section>
         `;
         document.body.classList.add("stage-active");
-        setHash("results");
+        setHash("result");
         document.getElementById("new-prediction")?.addEventListener("click", restoreForm);
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -357,7 +357,18 @@
                 const result = doc.querySelector("#result");
 
                 if (result) {
+
+                    if (
+                        window.AutoValueResults &&
+                        typeof window.AutoValueResults.saveResult === "function"
+                    ) {
+                        window.AutoValueResults.saveResult(
+                            result.outerHTML
+                        );
+                    }
+
                     renderResult(result);
+
                     return;
                 }
 
