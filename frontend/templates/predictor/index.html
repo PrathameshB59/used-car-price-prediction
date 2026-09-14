@@ -699,7 +699,7 @@
 
 
             <!-- =========================
-                 MODEL A vs MODEL B RESULT
+                 ML PRICE ESTIMATE vs MARKET AI ESTIMATE RESULT
             ========================== -->
 
             {% if model_a or model_b or model_a_error or model_b_error %}
@@ -707,7 +707,7 @@
             <div id="result" class="result">
 
                 <p class="comparison-title">
-                    MODEL A vs MODEL B
+                    ML PRICE ESTIMATE vs MARKET AI ESTIMATE
                 </p>
 
                 <p class="result-note">
@@ -725,16 +725,16 @@
                     class="model-comparison"
                 >
 
-                    <!-- MODEL A -->
+                    <!-- ML PRICE ESTIMATE -->
 
                     <div class="model-card model-a-card">
 
                         <p class="model-label">
-                            MODEL A
+                            ML PRICE ESTIMATE
                         </p>
 
                         <h3>
-                            Trained ML Model
+                            Random Forest Estimate
                         </h3>
 
                         {% if model_a %}
@@ -751,7 +751,7 @@
                         {% else %}
 
                         <p class="model-error">
-                            Model A prediction failed.
+                            ML Price Estimate failed.
                         </p>
 
                         {% if model_a_error %}
@@ -765,16 +765,16 @@
                     </div>
 
 
-                    <!-- MODEL B -->
+                    <!-- MARKET AI ESTIMATE -->
 
                     <div class="model-card model-b-card">
 
                         <p class="model-label">
-                            MODEL B
+                            MARKET AI ESTIMATE
                         </p>
 
                         <h3>
-                            AI + Internet Market Model
+                            Gemini + Market Research
                         </h3>
 
                         {% if model_b %}
@@ -805,7 +805,7 @@
                         {% else %}
 
                         <p class="model-error">
-                            Model B prediction failed.
+                            Market AI Estimate failed.
                         </p>
 
                         {% if model_b_error %}
@@ -841,7 +841,7 @@
                         <strong>
                             {{ comparison.difference_percent|floatformat:2 }}%
                         </strong>
-                        difference relative to Model A.
+                        difference relative to ML Price Estimate.
                     </p>
 
                     <p>
@@ -855,7 +855,7 @@
 
 
                 <!-- =========================
-                     MODEL B REASONING
+                     MARKET AI ESTIMATE REASONING
                 ========================== -->
 
                 {% if model_b.reasoning %}
@@ -863,7 +863,7 @@
                 <div class="model-b-analysis">
 
                     <p class="comparison-heading">
-                        Model B Market Analysis
+                        Market AI Analysis
                     </p>
 
                     <p>
