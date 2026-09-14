@@ -2983,3 +2983,142 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
+/* =========================================================
+   RESULTS PAGE ACTIONS
+   Polished navigation controls for returning to prediction.
+   ========================================================= */
+
+.results-page-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.results-back-button,
+.results-predict-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.results-back-button {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: inherit;
+    cursor: pointer;
+}
+
+.results-predict-link {
+    gap: 10px;
+    border: 1px solid rgba(0, 255, 200, 0.22);
+    background: rgba(0, 255, 200, 0.08);
+    color: inherit;
+}
+
+.results-back-button:hover,
+.results-predict-link:hover {
+    transform: translateY(-2px);
+}
+
+.results-back-button:focus-visible,
+.results-predict-link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+
+.results-predict-link span {
+    transition: transform 0.2s ease;
+}
+
+.results-predict-link:hover span {
+    transform: translateX(4px);
+}
+
+@media (max-width: 640px) {
+    .results-page-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .results-back-button,
+    .results-predict-link {
+        width: 100%;
+    }
+}
+/* =========================================================
+   RESULTS PAGE TOP ACTION
+   Back navigation stays visible above the results.
+   ========================================================= */
+
+.results-top-action {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.results-top-action .results-back-button {
+    min-height: 44px;
+    padding: 0 18px;
+}
+
+/* =========================================================
+   RESULTS PAGE BOTTOM CTA
+   Main action for starting another prediction.
+   ========================================================= */
+
+.results-page-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.results-predict-link {
+    min-height: 48px;
+    padding: 0 24px;
+}
+
+.results-action-note {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.65;
+    text-align: center;
+}
+
+@media (max-width: 640px) {
+    .results-top-action {
+        margin-bottom: 16px;
+    }
+
+    .results-top-action .results-back-button {
+        width: auto;
+    }
+
+    .results-page-actions {
+        margin-top: 24px;
+    }
+
+    .results-predict-link {
+        width: 100%;
+    }
+}
