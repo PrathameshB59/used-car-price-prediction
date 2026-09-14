@@ -2953,3 +2953,33 @@ body {
     }
 
 }
+
+/* =========================================================
+   TOPBAR-ONLY NAVIGATION
+   The sidebar was removed; the topbar is the single
+   application navigation.
+   ========================================================= */
+
+.page {
+    margin-left: 0;
+}
+
+/* =========================================================
+   FULL-WIDTH TOPBAR LAYOUT
+   Center the prediction page after removing the sidebar.
+   ========================================================= */
+
+.page {
+    width: min(1200px, calc(100% - 48px));
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Keep the prediction form/card centered and responsive. */
+.page .prediction-card {
+    width: 100%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}

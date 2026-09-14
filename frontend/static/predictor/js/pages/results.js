@@ -92,7 +92,9 @@
                     </h2>
 
                     <p>
-                        Your recent Model A vs Model B
+                        Your recent ${window.AutoValueConfig.modelA.name}
+                                    vs
+                                    ${window.AutoValueConfig.modelB.name}
                         predictions are stored locally
                         in this browser.
                     </p>
