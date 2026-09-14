@@ -274,47 +274,135 @@
             .replaceAll("'", "&#039;");
     }
 
-    function renderError(message) {
+    function renderError(message, details = "") {
         stopLoading();
+
+        const safeMessage = escapeHTML(message);
+        const safeDetails = details ? escapeHTML(details) : "";
+
         page.innerHTML = `
             <section class="flow-screen result-screen">
                 <div class="flow-shell">
                     <div class="flow-kicker">Prediction issue</div>
-                    <h1 class="flow-title">We couldn't finish that</h1>
+
+                    <h1 class="flow-title">
+                        We couldn't complete the prediction
+                    </h1>
+
                     <p class="flow-subtitle">
-                        The prediction request did not return a usable result.
+                        Something interrupted the prediction process.
+                        Your data has not been changed.
                     </p>
-                    <div class="flow-error">${escapeHTML(message)}</div>
+
+                    <div class="flow-error">
+                        <strong>${safeMessage}</strong>
+                        ${
+                            safeDetails
+                                ? `<br><br><span>${safeDetails}</span>`
+                                : ""
+                        }
+                    </div>
+
                     <div class="result-actions">
-                        <button type="button" id="retry-prediction">← Back to form</button>
+                        <button
+                            type="button"
+                            id="retry-prediction"
+                        >
+                            ← Try again
+                        </button>
                     </div>
                 </div>
             </section>
         `;
+
+        document.body.classList.add("stage-active");
         setHash("error");
-        document.getElementById("retry-prediction")?.addEventListener("click", restoreForm);
+
+        document
+            .getElementById("retry-prediction")
+            ?.addEventListener("click", restoreForm);
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function getResultStatus(resultElement) {
+        const mlError = resultElement.querySelector(
+            ".model-a-card .model-error"
+        );
+
+        const marketAIError = resultElement.querySelector(
+            ".model-b-card .model-error"
+        );
+
+        if (!mlError && !marketAIError) {
+            return {
+                title: "Your valuation is ready",
+                message:
+                    "Both valuation paths completed successfully."
+            };
+        }
+
+        if (!mlError && marketAIError) {
+            return {
+                title: "Prediction completed with limited analysis",
+                message:
+                    "Your ML Price Estimate is available, but Market AI could not complete the current-market analysis."
+            };
+        }
+
+        if (mlError && !marketAIError) {
+            return {
+                title: "Prediction completed with limited analysis",
+                message:
+                    "Market AI returned an estimate, but the ML Price Estimate could not be calculated."
+            };
+        }
+
+        return {
+            title: "Prediction could not be completed",
+            message:
+                "Neither valuation path returned a usable estimate."
+        };
     }
 
     function renderResult(resultElement) {
         stopLoading();
+
+        const status = getResultStatus(resultElement);
+
         page.innerHTML = `
             <section class="flow-screen result-screen">
                 <div class="flow-shell">
                     <div class="flow-kicker">Prediction complete</div>
-                    <h1 class="flow-title">Your valuation is ready</h1>
+
+                    <h1 class="flow-title">
+                        ${escapeHTML(status.title)}
+                    </h1>
+
                     <p class="flow-subtitle">
-                        A clear comparison between the trained ML model and AI market analysis.
+                        ${escapeHTML(status.message)}
                     </p>
-                    <div class="result-container">${resultElement.outerHTML}</div>
+
+                    <div class="result-container">
+                        ${resultElement.outerHTML}
+                    </div>
+
                     <div class="result-actions">
-                        <button type="button" id="new-prediction">↻ Predict another car</button>
+                        <button type="button" id="new-prediction">
+                            ↻ Predict another car
+                        </button>
                     </div>
                 </div>
             </section>
         `;
+
         document.body.classList.add("stage-active");
         setHash("result");
-        document.getElementById("new-prediction")?.addEventListener("click", restoreForm);
+
+        document
+            .getElementById("new-prediction")
+            ?.addEventListener("click", restoreForm);
+
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -381,7 +469,12 @@
                 renderError("No prediction result was found in the server response.");
             })
             .catch((error) => {
-                renderError(error.message || "Network error while requesting prediction.");
+                renderError(
+                    "We couldn't reach the prediction service.",
+                    "Please check that the Django server is running, then try again."
+                );
+
+                console.error("Prediction request failed:", error);
             });
     }
 
