@@ -107,51 +107,76 @@
         </p>
 
 
-        <div class="how-flow">
+        <div class="how-flow-section">
 
-            <div class="flow-box">
-                <strong>User Input</strong>
+            <div class="how-flow-heading">
+                <div>
+                    <p class="flow-eyebrow">MODEL A PIPELINE</p>
+                    <h3>How the ML estimate is produced</h3>
+                </div>
 
-                <span>
-                    Car details
-                </span>
+                <div class="flow-controls" aria-label="ML pipeline navigation">
+                    <button
+                        type="button"
+                        class="flow-control"
+                        data-scroll-target="ml-flow-track"
+                        data-scroll-direction="left"
+                        aria-label="Scroll ML pipeline left">
+                        ←
+                    </button>
+
+                    <button
+                        type="button"
+                        class="flow-control"
+                        data-scroll-target="ml-flow-track"
+                        data-scroll-direction="right"
+                        aria-label="Scroll ML pipeline right">
+                        →
+                    </button>
+                </div>
             </div>
 
-            <div class="flow-line">
-                ↓
+            <div
+                class="how-flow"
+                id="ml-flow-track"
+                tabindex="0"
+                aria-label="ML valuation pipeline">
+
+                <div class="flow-box">
+                    <span class="flow-step-number">01</span>
+                    <strong>User Input</strong>
+                    <span>Car details entered by the user</span>
+                </div>
+
+                <div class="flow-line" aria-hidden="true">→</div>
+
+                <div class="flow-box">
+                    <span class="flow-step-number">02</span>
+                    <strong>Preprocessing</strong>
+                    <span>Saved preprocessing pipeline transforms the input</span>
+                </div>
+
+                <div class="flow-line" aria-hidden="true">→</div>
+
+                <div class="flow-box">
+                    <span class="flow-step-number">03</span>
+                    <strong>Random Forest</strong>
+                    <span>Trained regression model evaluates the features</span>
+                </div>
+
+                <div class="flow-line" aria-hidden="true">→</div>
+
+                <div class="flow-box flow-result">
+                    <span class="flow-step-number">04</span>
+                    <strong>ML Price</strong>
+                    <span>Final ML estimated vehicle value</span>
+                </div>
+
             </div>
 
-            <div class="flow-box">
-                <strong>Preprocessing</strong>
-
-                <span>
-                    Saved preprocessing pipeline
-                </span>
-            </div>
-
-            <div class="flow-line">
-                ↓
-            </div>
-
-            <div class="flow-box">
-                <strong>Random Forest</strong>
-
-                <span>
-                    Trained regression model
-                </span>
-            </div>
-
-            <div class="flow-line">
-                ↓
-            </div>
-
-            <div class="flow-box flow-result">
-                <strong>ML Price</strong>
-
-                <span>
-                    ML estimated value
-                </span>
-            </div>
+            <p class="flow-scroll-hint">
+                Swipe or scroll horizontally to explore each stage.
+            </p>
 
         </div>
 
@@ -233,92 +258,152 @@
         </p>
 
 
-        <div class="how-flow">
+        <div class="how-flow-section">
 
-            <div class="flow-box">
-                <strong>User Input</strong>
+            <div class="how-flow-heading">
 
-                <span>
-                    Same vehicle details
-                </span>
+                <div>
+                    <p class="flow-eyebrow">
+                        MODEL B PIPELINE
+                    </p>
+
+                    <h3>
+                        How the market estimate is produced
+                    </h3>
+                </div>
+
+
+                <div
+                    class="flow-controls"
+                    aria-label="Market AI pipeline navigation">
+
+                    <button
+                        type="button"
+                        class="flow-control"
+                        data-scroll-target="market-flow-track"
+                        data-scroll-direction="left"
+                        aria-label="Scroll Market AI pipeline left">
+                        ←
+                    </button>
+
+                    <button
+                        type="button"
+                        class="flow-control"
+                        data-scroll-target="market-flow-track"
+                        data-scroll-direction="right"
+                        aria-label="Scroll Market AI pipeline right">
+                        →
+                    </button>
+
+                </div>
+
             </div>
 
-            <div class="flow-line">
-                ↓
+
+            <div
+                class="how-flow"
+                id="market-flow-track"
+                tabindex="0"
+                aria-label="Market AI valuation pipeline">
+
+
+                <div class="flow-box">
+
+                    <span class="flow-step-number">
+                        01
+                    </span>
+
+                    <strong>
+                        User Input
+                    </strong>
+
+                    <span>
+                        Same vehicle details supplied to the AI pipeline
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="flow-line"
+                    aria-hidden="true">
+                    →
+                </div>
+
+
+                <div class="flow-box">
+
+                    <span class="flow-step-number">
+                        02
+                    </span>
+
+                    <strong>
+                        Gemini AI
+                    </strong>
+
+                    <span>
+                        AI analyzes the vehicle and market context
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="flow-line"
+                    aria-hidden="true">
+                    →
+                </div>
+
+
+                <div class="flow-box">
+
+                    <span class="flow-step-number">
+                        03
+                    </span>
+
+                    <strong>
+                        Market Evidence
+                    </strong>
+
+                    <span>
+                        Current web and search information supports the analysis
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="flow-line"
+                    aria-hidden="true">
+                    →
+                </div>
+
+
+                <div class="flow-box flow-result">
+
+                    <span class="flow-step-number">
+                        04
+                    </span>
+
+                    <strong>
+                        Market AI Price
+                    </strong>
+
+                    <span>
+                        Market-informed estimated vehicle value
+                    </span>
+
+                </div>
+
+
             </div>
 
-            <div class="flow-box">
-                <strong>Gemini AI</strong>
 
-                <span>
-                    Market analysis
-                </span>
-            </div>
-
-            <div class="flow-line">
-                ↓
-            </div>
-
-            <div class="flow-box">
-                <strong>Market Evidence</strong>
-
-                <span>
-                    Current web/search information
-                </span>
-            </div>
-
-            <div class="flow-line">
-                ↓
-            </div>
-
-            <div class="flow-box flow-result">
-                <strong>Market AI Price</strong>
-
-                <span>
-                    Market-informed estimate
-                </span>
-            </div>
-
-        </div>
-
-
-        <div class="fallback-panel">
-
-            <p class="fallback-label">
-                SEARCH / FALLBACK PIPELINE
+            <p class="flow-scroll-hint">
+                Swipe or scroll horizontally to explore each stage.
             </p>
 
-            <div class="fallback-flow">
-
-                <span>
-                    Gemini
-                </span>
-
-                <span>
-                    →
-                </span>
-
-                <span>
-                    Market Search
-                </span>
-
-                <span>
-                    →
-                </span>
-
-                <span>
-                    Tavily fallback
-                </span>
-
-                <span>
-                    →
-                </span>
-
-                <span>
-                    Evidence
-                </span>
-
-            </div>
+        </div>
 
             <p>
                 When the primary search path is unavailable,
