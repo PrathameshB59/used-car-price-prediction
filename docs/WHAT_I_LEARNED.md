@@ -95,3 +95,36 @@ HOW does the code implement it?
 WHAT does the output mean?
 WHAT changes in the architecture?
 ```
+
+
+## Frontend Architecture
+
+The frontend is separated into reusable pages and JavaScript modules.
+
+### Prediction Flow
+
+User enters vehicle details → Prediction form → Django backend → Model A + Model B processing → Prediction response → Frontend displays result.
+
+The frontend handles the user experience around this process without changing the backend prediction logic.
+
+### Separate Results Page
+
+Prediction results are displayed on a separate Results dashboard. Completed prediction results are stored locally in the browser using `localStorage`.
+
+### Frontend State Handling
+
+The prediction interface has different states: Form → Loading → Success / Partial Success / Error.
+
+This allows the interface to communicate what happened instead of showing only a generic success or failure message.
+
+### Model Naming
+
+The frontend uses clear names for the two valuation paths: **ML Price Estimate** and **Market AI Estimate**.
+
+This makes the difference between the machine-learning prediction and the market-research estimate easier to understand.
+
+### Learning Pattern
+
+The frontend reinforced the same project principle used throughout the AIML work:
+
+WHY? → WHAT concept? → HOW does the code implement it? → WHAT does the user see? → HOW does it connect to the ML system?

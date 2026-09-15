@@ -1,6 +1,35 @@
 # Changelog
 
----
+## 2026-09-15 — Frontend Dashboard & UX Refinement
+
+### Completed
+
+- Separate Results dashboard page added.
+- Prediction history stored locally in the browser using `localStorage`.
+- Results page navigation refined with `Back to form` at the top and `Predict another car` as the bottom action.
+- Prediction flow now distinguishes successful, partial, and failed valuation states on the frontend.
+- ML Price Estimate and Market AI Estimate naming standardized across the frontend.
+- How It Works page separated into its own frontend page.
+- Topbar navigation simplified to a single application navigation bar.
+- Frontend prediction flow kept separate from backend prediction logic.
+
+### Current Frontend Flow
+
+```text
+Prediction Form
+      ↓
+Loading State
+      ↓
+Prediction Result
+      ↓
+ML Price Estimate + Market AI Estimate
+      ↓
+Local Prediction History
+      ↓
+Results Dashboard
+```
+
+----
 
 ## 2026-09-05 — Model B Development
 

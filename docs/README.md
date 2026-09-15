@@ -47,6 +47,20 @@ Predicted price
    ↓
 Web UI
 ```
+## Frontend Experience
+
+The application provides three main user-facing areas:
+
+```text
+Predict
+→ Enter vehicle details and receive valuation estimates.
+
+Results
+→ Review previous predictions stored locally in the browser.
+
+How It Works
+→ Understand the ML and market-AI valuation pipelines.
+```
 
 ### Run Locally
 

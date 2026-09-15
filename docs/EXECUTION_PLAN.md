@@ -55,4 +55,29 @@ Model B is designed as an AI-assisted market research pipeline rather than a mod
                      Separate results
                              ↓
                    Model A | Model B
-{ _ble_edit_exec_gexec__save_lastarg "$@"; } 4>&1 5>&2 &>/dev/null
+
+
+## Frontend Integration Status — 2026-09-15
+
+- [x] Separate Results dashboard page
+- [x] Local prediction history using browser `localStorage`
+- [x] ML Price Estimate frontend naming
+- [x] Market AI Estimate frontend naming
+- [x] Prediction loading, result, and error states
+- [x] Results page navigation
+- [x] Separate How It Works page
+- [x] Topbar-only application navigation
+
+### Current Frontend Flow
+
+Prediction Form
+      ↓
+Loading State
+      ↓
+Prediction Result
+      ↓
+ML Price Estimate + Market AI Estimate
+      ↓
+Local Prediction History
+      ↓
+Results Dashboard
