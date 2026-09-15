@@ -1,6 +1,39 @@
 (function () {
     "use strict";
 
+        document.addEventListener("click", function (event) {
+            const button = event.target.closest(".flow-control");
+
+            if (!button) {
+                return;
+            }
+
+            const targetId = button.dataset.scrollTarget;
+
+            const direction =
+                button.dataset.scrollDirection === "left"
+                    ? -1
+                    : 1;
+
+            const scroller =
+                document.getElementById(targetId);
+
+            if (!scroller) {
+                return;
+            }
+
+            const scrollAmount =
+                Math.min(
+                    420,
+                    scroller.clientWidth * 0.85
+                );
+
+            scroller.scrollBy({
+                left: direction * scrollAmount,
+                behavior: "smooth"
+            });
+        });
+
     const PAGE_URL = "/static/predictor/pages/how-it-works.html";
 
     async function loadPage() {
