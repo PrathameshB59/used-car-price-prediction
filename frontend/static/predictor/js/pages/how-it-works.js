@@ -101,7 +101,7 @@
                         </p>
 
                         <h1>
-                            How the valuation works
+                            How the price prediction works
                         </h1>
 
                         <p class="page-subtitle">

@@ -336,9 +336,9 @@
 
         if (!mlError && !marketAIError) {
             return {
-                title: "Your valuation is ready",
+                title: "Your price prediction is ready",
                 message:
-                    "Both valuation paths completed successfully."
+                    "Both prediction paths completed successfully."
             };
         }
 
@@ -361,7 +361,7 @@
         return {
             title: "Prediction could not be completed",
             message:
-                "Neither valuation path returned a usable estimate."
+                "Neither prediction path returned a usable estimate."
         };
     }
 

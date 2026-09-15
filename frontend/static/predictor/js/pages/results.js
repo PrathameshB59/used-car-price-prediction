@@ -62,7 +62,7 @@
                     </h2>
 
                     <p>
-                        Complete your first vehicle valuation
+                        Complete your first vehicle price prediction
                         and it will appear here automatically.
                     </p>
 
@@ -88,7 +88,7 @@
                     </p>
 
                     <h2>
-                        Previous valuations
+                        Previous predictions
                     </h2>
 
                     <p>
