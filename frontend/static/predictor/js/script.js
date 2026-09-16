@@ -530,3 +530,99 @@
         setupFrontendPages();
     }
 })();
+
+/* =========================================================
+   THEME TOGGLE
+   Switches between dark and light mode and remembers
+   the user's choice in localStorage.
+========================================================= */
+
+(function () {
+    "use strict";
+
+    const THEME_KEY = "autovalue-theme";
+
+    function getSavedTheme() {
+        try {
+            return localStorage.getItem(THEME_KEY) === "light"
+                ? "light"
+                : "dark";
+        } catch (_) {
+            return "dark";
+        }
+    }
+
+    function saveTheme(theme) {
+        try {
+            localStorage.setItem(THEME_KEY, theme);
+        } catch (_) {
+            // Theme still works even if browser storage is unavailable.
+        }
+    }
+
+    function applyTheme(theme) {
+        const isLight = theme === "light";
+
+        document.body.classList.toggle("light-mode", isLight);
+        document.documentElement.classList.toggle("light-mode", isLight);
+
+        const toggle = document.getElementById("theme-toggle");
+
+        if (!toggle) {
+            return;
+        }
+
+        const icon = toggle.querySelector(".theme-toggle-icon");
+        const label = toggle.querySelector(".theme-toggle-label");
+
+        if (isLight) {
+            toggle.setAttribute("aria-label", "Switch to dark mode");
+            toggle.setAttribute("title", "Switch to dark mode");
+
+            if (icon) {
+                icon.textContent = "🌙";
+            }
+
+            if (label) {
+                label.textContent = "Dark";
+            }
+        } else {
+            toggle.setAttribute("aria-label", "Switch to light mode");
+            toggle.setAttribute("title", "Switch to light mode");
+
+            if (icon) {
+                icon.textContent = "☀️";
+            }
+
+            if (label) {
+                label.textContent = "Light";
+            }
+        }
+    }
+
+    function initTheme() {
+        applyTheme(getSavedTheme());
+
+        const toggle = document.getElementById("theme-toggle");
+
+        if (!toggle) {
+            return;
+        }
+
+        toggle.addEventListener("click", function () {
+            const nextTheme =
+                document.body.classList.contains("light-mode")
+                    ? "dark"
+                    : "light";
+
+            applyTheme(nextTheme);
+            saveTheme(nextTheme);
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initTheme);
+    } else {
+        initTheme();
+    }
+})();
