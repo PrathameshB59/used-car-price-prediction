@@ -3437,3 +3437,2009 @@ body {
         flex-basis: calc(100vw - 72px);
     }
 }
+
+/* =========================================================
+   AUTOVALUE AI — LIGHT MODE
+   Semantic color system for presentation mode
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   COLOR TOKENS
+   --------------------------------------------------------- */
+
+html.light-mode,
+body.light-mode {
+    background: #f4f7fb;
+    color: #172033;
+}
+
+body.light-mode {
+    color-scheme: light;
+
+    --light-bg: #f4f7fb;
+    --light-surface: #ffffff;
+    --light-surface-soft: #f8fafc;
+
+    --light-text: #172033;
+    --light-muted: #64748b;
+
+    --light-border: #d9e2ec;
+    --light-border-soft: #e6edf4;
+
+    --blue: #1683c7;
+    --blue-soft: #eef7ff;
+    --blue-border: #b9dcf6;
+
+    --green: #078f7d;
+    --green-soft: #ecfbf7;
+    --green-border: #b8e8df;
+
+    --orange: #c45a0a;
+    --orange-soft: #fff7ed;
+    --orange-border: #f7cfa8;
+
+    --purple: #7a35a8;
+    --purple-soft: #faf5ff;
+    --purple-border: #e6c9f7;
+
+    --red: #b42318;
+    --red-soft: #fff5f4;
+    --red-border: #f3c5c0;
+}
+
+body.light-mode a {
+    color: inherit;
+}
+
+/* ---------------------------------------------------------
+   TOPBAR
+   --------------------------------------------------------- */
+
+body.light-mode .topbar {
+    background: rgba(248, 251, 255, 0.96);
+    border-bottom-color: #dbe4ef;
+    box-shadow: 0 2px 16px rgba(37, 60, 90, 0.07);
+}
+
+body.light-mode .brand {
+    color: var(--light-text);
+}
+
+body.light-mode .brand-mark {
+    background: #eaf5ff;
+    border-color: #c7e0f5;
+}
+
+body.light-mode .brand-copy small {
+    color: var(--green);
+}
+
+body.light-mode .topbar-link {
+    color: #5f6f84;
+}
+
+body.light-mode .topbar-link:hover,
+body.light-mode .topbar-link.active {
+    color: #075f9f;
+    background: #eaf4ff;
+}
+
+body.light-mode .topbar-link.active::after {
+    background: var(--blue);
+}
+
+body.light-mode .system-status {
+    color: #475467;
+    background: #f8fbff;
+    border-color: #cdd9e6;
+}
+
+body.light-mode .github-link {
+    color: #344054;
+}
+
+body.light-mode .github-link:hover {
+    color: var(--green);
+}
+
+body.light-mode .theme-toggle {
+    background: #ffffff;
+    color: #344054;
+    border-color: #cdd9e6;
+    box-shadow: 0 2px 8px rgba(37, 60, 90, 0.05);
+}
+
+body.light-mode .theme-toggle:hover {
+    background: #ecfbf7;
+    color: var(--green);
+    border-color: var(--green-border);
+}
+
+/* ---------------------------------------------------------
+   PREDICT — PAGE / HERO
+   --------------------------------------------------------- */
+
+body.light-mode .page {
+    color: var(--light-text);
+}
+
+body.light-mode .hero {
+    color: var(--light-text);
+}
+
+body.light-mode .hero .eyebrow {
+    color: var(--green);
+}
+
+body.light-mode .hero h1 {
+    color: var(--light-text);
+}
+
+body.light-mode .hero h1 span {
+    color: #08cfae;
+}
+
+body.light-mode .hero .description {
+    color: #5d718c;
+}
+
+body.light-mode .hero .status {
+    color: #47627d;
+    background: #f8fbff;
+    border-color: #cbd9e7;
+}
+
+body.light-mode .hero .status-dot {
+    background: #0ac7a8;
+}
+
+/* ---------------------------------------------------------
+   DASHBOARD OVERVIEW
+   --------------------------------------------------------- */
+
+body.light-mode .dashboard-overview {
+    background: linear-gradient(135deg, #f8fbff, #f1f8ff);
+    border-color: #cfe2f4;
+    box-shadow: 0 14px 34px rgba(37, 60, 90, 0.06);
+}
+
+body.light-mode .dashboard-eyebrow {
+    color: var(--blue);
+}
+
+body.light-mode .dashboard-heading h2 {
+    color: var(--light-text);
+}
+
+body.light-mode .dashboard-heading p:not(.dashboard-eyebrow) {
+    color: var(--light-muted);
+}
+
+body.light-mode .dashboard-live {
+    color: var(--green);
+    background: var(--green-soft);
+    border-color: var(--green-border);
+}
+
+body.light-mode .dashboard-metric {
+    background: #ffffff;
+    border-color: #d8e4ef;
+    box-shadow: 0 10px 24px rgba(37, 60, 90, 0.05);
+}
+
+body.light-mode .dashboard-metric:nth-child(1) {
+    background: linear-gradient(145deg, #ffffff, var(--blue-soft));
+    border-color: var(--blue-border);
+}
+
+body.light-mode .dashboard-metric:nth-child(2) {
+    background: linear-gradient(145deg, #ffffff, var(--green-soft));
+    border-color: var(--green-border);
+}
+
+body.light-mode .dashboard-metric:nth-child(3) {
+    background: linear-gradient(145deg, #ffffff, var(--orange-soft));
+    border-color: var(--orange-border);
+}
+
+body.light-mode .metric-icon {
+    background: #edf6ff;
+    color: var(--blue);
+    border-color: var(--blue-border);
+}
+
+body.light-mode .dashboard-metric:nth-child(2) .metric-icon {
+    background: var(--green-soft);
+    color: var(--green);
+    border-color: var(--green-border);
+}
+
+body.light-mode .dashboard-metric:nth-child(3) .metric-icon {
+    background: var(--orange-soft);
+    color: var(--orange);
+    border-color: var(--orange-border);
+}
+
+body.light-mode .metric-label {
+    color: #718096;
+}
+
+body.light-mode .dashboard-metric strong {
+    color: var(--light-text);
+}
+
+body.light-mode .dashboard-metric small {
+    color: var(--light-muted);
+}
+
+body.light-mode .metric-status {
+    color: var(--green);
+}
+
+/* ---------------------------------------------------------
+   PREDICTION CARD
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card {
+    background:
+        linear-gradient(145deg, #ffffff, #f9fbfd);
+    border-color: #d8e2ec;
+    box-shadow:
+        0 22px 55px rgba(37, 60, 90, 0.08),
+        inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+body.light-mode .card-icon {
+    background: #ecf7ff;
+    border-color: #c5e1f7;
+}
+
+body.light-mode .prediction-card h2 {
+    color: var(--light-text);
+}
+
+body.light-mode .card-description {
+    color: #61728b;
+}
+
+/* ---------------------------------------------------------
+   FORM SECTIONS
+   --------------------------------------------------------- */
+
+body.light-mode .form-section + .form-section {
+    border-top-color: #dce6ef;
+}
+
+body.light-mode .section-title {
+    color: #24415f;
+}
+
+body.light-mode .section-title::after {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(22,131,199,.35),
+            rgba(22,131,199,.06)
+        );
+}
+
+/* ---------------------------------------------------------
+   FORM LABELS
+   --------------------------------------------------------- */
+
+body.light-mode .form-group label {
+    color: #344054;
+}
+
+/* ---------------------------------------------------------
+   FORM INPUTS
+   --------------------------------------------------------- */
+
+body.light-mode .form-group input,
+body.light-mode .form-group select,
+body.light-mode input,
+body.light-mode select,
+body.light-mode textarea {
+    background: #ffffff;
+    color: var(--light-text);
+    border-color: #cdd9e6;
+}
+
+body.light-mode .form-group input:hover,
+body.light-mode .form-group select:hover,
+body.light-mode input:hover,
+body.light-mode select:hover,
+body.light-mode textarea:hover {
+    border-color: #9fc4e2;
+}
+
+body.light-mode .form-group input:focus,
+body.light-mode .form-group select:focus,
+body.light-mode input:focus,
+body.light-mode select:focus,
+body.light-mode textarea:focus {
+    border-color: var(--blue);
+    box-shadow:
+        0 0 0 3px rgba(22,131,199,.12),
+        0 8px 24px rgba(22,131,199,.08);
+    outline: none;
+}
+
+body.light-mode input::placeholder,
+body.light-mode textarea::placeholder {
+    color: #98a2b3;
+}
+
+body.light-mode .field-help,
+body.light-mode .form-help {
+    color: #718096;
+}
+
+/* Calculated vehicle age */
+
+body.light-mode .form-group input[readonly],
+body.light-mode .form-group input:disabled {
+    background:
+        linear-gradient(135deg, #f0fcf9, #f7fffd);
+    color: #087f73;
+    border-color: #a9e3d9;
+}
+
+/* ---------------------------------------------------------
+   PREDICT BUTTON
+   --------------------------------------------------------- */
+
+body.light-mode #predict-button {
+    background:
+        linear-gradient(
+            135deg,
+            #078f7d,
+            #08b89f
+        );
+    color: #ffffff;
+    border-color: #078f7d;
+    box-shadow:
+        0 12px 28px rgba(7,143,125,.18);
+}
+
+body.light-mode #predict-button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #067c6d,
+            #08a98f
+        );
+    box-shadow:
+        0 16px 34px rgba(7,143,125,.24);
+}
+
+/* ---------------------------------------------------------
+   DYNAMIC LOADING SCREEN
+   IMPORTANT:
+   script.js creates .loading-panel, not .loading-card.
+   --------------------------------------------------------- */
+
+body.light-mode.stage-active {
+    background:
+        radial-gradient(
+            circle at 50% 5%,
+            rgba(22,131,199,.08),
+            transparent 34%
+        ),
+        #f4f7fb;
+}
+
+body.light-mode .flow-screen {
+    color: var(--light-text);
+}
+
+body.light-mode .flow-title {
+    color: var(--light-text);
+}
+
+body.light-mode .flow-subtitle {
+    color: #6a7b92;
+}
+
+body.light-mode .flow-kicker {
+    color: var(--green);
+    background: var(--green-soft);
+    border-color: var(--green-border);
+}
+
+body.light-mode .flow-kicker::before {
+    background: #08b89f;
+    box-shadow: 0 0 12px rgba(8,184,159,.35);
+}
+
+body.light-mode .loading-panel {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f2f8ff
+        );
+    border-color: #cbdceb;
+    box-shadow:
+        0 28px 65px rgba(37,60,90,.14);
+}
+
+body.light-mode .loading-car {
+    background:
+        radial-gradient(
+            circle,
+            rgba(22,131,199,.10),
+            rgba(7,143,125,.04) 68%
+        );
+    border-color: rgba(22,131,199,.24);
+}
+
+body.light-mode .loading-message {
+    color: var(--light-text);
+}
+
+body.light-mode .loading-progress {
+    background: #dce7f0;
+}
+
+body.light-mode .loading-progress > span {
+    background:
+        linear-gradient(
+            90deg,
+            #1683c7,
+            #08b89f,
+            #1683c7
+        );
+}
+
+body.light-mode .loading-step {
+    background: #f8fafc;
+    color: #718096;
+    border-color: #dbe4ec;
+}
+
+body.light-mode .loading-step.active {
+    color: var(--green);
+    background: var(--green-soft);
+    border-color: var(--green-border);
+}
+
+/* ---------------------------------------------------------
+   DYNAMIC RESULT SCREEN
+   script.js creates .result-container + .model-card.
+   --------------------------------------------------------- */
+
+body.light-mode .result-screen .flow-title {
+    color: var(--light-text);
+}
+
+body.light-mode .result-screen .flow-subtitle {
+    color: #6a7b92;
+}
+
+body.light-mode .result-container {
+    color: var(--light-text);
+}
+
+body.light-mode .result-container .result {
+    color: var(--light-text);
+}
+
+body.light-mode .result-container .comparison-title,
+body.light-mode .result-container .comparison-heading {
+    color: #58718b;
+}
+
+body.light-mode .result-container .result-note {
+    color: #6a7b92;
+}
+
+body.light-mode .result-container .model-card,
+body.light-mode .result-container .comparison-summary,
+body.light-mode .result-container .model-b-analysis,
+body.light-mode .result-container .prediction-sources {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f7fbff
+        );
+    border-color: #d6e1eb;
+    box-shadow:
+        0 16px 38px rgba(37,60,90,.08);
+}
+
+body.light-mode .result-container .model-card:first-child {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f1f8ff
+        );
+    border-color: var(--blue-border);
+}
+
+body.light-mode .result-container .model-b-card {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #effcf8
+        );
+    border-color: var(--green-border);
+}
+
+body.light-mode .result-container .model-label {
+    color: #58718b;
+}
+
+body.light-mode .result-container .model-b-card .model-label {
+    color: var(--green);
+}
+
+body.light-mode .result-container .model-card h3 {
+    color: var(--light-text);
+}
+
+body.light-mode .result-container .model-price {
+    color: var(--green);
+}
+
+body.light-mode .result-container .model-description,
+body.light-mode .result-container .model-detail,
+body.light-mode .result-container .model-error,
+body.light-mode .result-container .model-error-detail {
+    color: #66778e;
+}
+
+body.light-mode .result-container .model-detail strong {
+    color: var(--light-text);
+}
+
+body.light-mode .result-container .comparison-summary {
+    background:
+        linear-gradient(
+            145deg,
+            #fffaf4,
+            #fff7ed
+        );
+    border-color: var(--orange-border);
+}
+
+body.light-mode .result-container .comparison-difference {
+    color: var(--orange);
+}
+
+body.light-mode .result-container .comparison-summary p {
+    color: #6d7180;
+}
+
+body.light-mode .result-container .comparison-summary strong {
+    color: var(--light-text);
+}
+
+body.light-mode .result-container .model-b-analysis {
+    background:
+        linear-gradient(
+            145deg,
+            #effcf8,
+            #f7fffd
+        );
+    border-color: var(--green-border);
+}
+
+body.light-mode .result-container .model-b-analysis > p:last-child {
+    color: #47687b;
+}
+
+body.light-mode .result-container .prediction-sources {
+    background:
+        linear-gradient(
+            145deg,
+            #f9f5ff,
+            #ffffff
+        );
+    border-color: var(--purple-border);
+}
+
+body.light-mode .result-container .prediction-sources a {
+    color: #6f2e99;
+}
+
+/* ---------------------------------------------------------
+   RESULT ACTIONS
+   --------------------------------------------------------- */
+
+body.light-mode .result-actions button {
+    background: #ffffff;
+    color: #344054;
+    border-color: #cdd9e6;
+    box-shadow: 0 8px 20px rgba(37,60,90,.06);
+}
+
+body.light-mode .result-actions button:hover {
+    background: #eaf5ff;
+    color: #075f9f;
+    border-color: #a9cde9;
+}
+
+/* ---------------------------------------------------------
+   ERROR / FALLBACK
+   --------------------------------------------------------- */
+
+body.light-mode .flow-error,
+body.light-mode .error,
+body.light-mode .error-card,
+body.light-mode .error-panel {
+    background: var(--red-soft);
+    color: var(--red);
+    border-color: var(--red-border);
+}
+
+body.light-mode .error-card h2,
+body.light-mode .error-panel h2 {
+    color: var(--red);
+}
+
+body.light-mode .error-card p,
+body.light-mode .error-panel p {
+    color: #a32b20;
+}
+
+/* ---------------------------------------------------------
+   RESULTS HISTORY PAGE
+   --------------------------------------------------------- */
+
+body.light-mode .results-page {
+    color: var(--light-text);
+}
+
+body.light-mode .results-page h1,
+body.light-mode .results-page h2,
+body.light-mode .results-page h3 {
+    color: var(--light-text);
+}
+
+body.light-mode .results-page p,
+body.light-mode .results-page .page-subtitle {
+    color: #66778e;
+}
+
+body.light-mode .results-page-shell {
+    color: var(--light-text);
+}
+
+body.light-mode .history-card {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f7fbff
+        );
+    border-color: #d6e1eb;
+    box-shadow: 0 14px 32px rgba(37,60,90,.07);
+}
+
+body.light-mode .history-card-top {
+    color: #66778e;
+    border-bottom-color: #e1e8ef;
+}
+
+body.light-mode .history-content {
+    color: var(--light-text);
+}
+
+body.light-mode .results-empty {
+    background: #ffffff;
+    border-color: #d6e1eb;
+}
+
+body.light-mode .results-empty h2 {
+    color: var(--light-text);
+}
+
+body.light-mode .results-empty p {
+    color: #66778e;
+}
+
+body.light-mode .results-predict-link {
+    color: var(--green);
+}
+
+/* ---------------------------------------------------------
+   HOW IT WORKS
+   --------------------------------------------------------- */
+
+body.light-mode .how-it-works-page {
+    color: var(--light-text);
+}
+
+body.light-mode .how-it-works-page h1,
+body.light-mode .how-it-works-page h2,
+body.light-mode .how-it-works-page h3,
+body.light-mode .how-it-works-page strong {
+    color: var(--light-text);
+}
+
+body.light-mode .how-it-works-page .page-eyebrow,
+body.light-mode .how-it-works-page .flow-eyebrow,
+body.light-mode .how-it-works-page .model-label,
+body.light-mode .how-it-works-page .fallback-label {
+    color: var(--green);
+}
+
+body.light-mode .how-it-works-page .page-subtitle,
+body.light-mode .how-it-works-page .how-model-intro,
+body.light-mode .how-it-works-page .workflow-step p,
+body.light-mode .how-it-works-page .how-detail-grid p,
+body.light-mode .how-it-works-page .how-detail-grid li,
+body.light-mode .how-it-works-page .comparison-explanation > p,
+body.light-mode .how-it-works-page .learning-section > p {
+    color: #66778e;
+}
+
+/* Overview */
+
+body.light-mode .how-it-works-page .workflow-step {
+    background: #ffffff;
+    border-color: #dce5ed;
+    box-shadow: 0 12px 30px rgba(37,60,90,.06);
+}
+
+body.light-mode .how-it-works-page .workflow-step:nth-child(1) {
+    background: linear-gradient(145deg,#ffffff,#f1f8ff);
+    border-color: var(--blue-border);
+}
+
+body.light-mode .how-it-works-page .workflow-step:nth-child(3) {
+    background: linear-gradient(145deg,#ffffff,#effcf8);
+    border-color: var(--green-border);
+}
+
+body.light-mode .how-it-works-page .workflow-step:nth-child(5) {
+    background: linear-gradient(145deg,#ffffff,#fff8f0);
+    border-color: var(--orange-border);
+}
+
+body.light-mode .how-it-works-page .workflow-step:nth-child(1) .workflow-number {
+    color: var(--blue);
+}
+
+body.light-mode .how-it-works-page .workflow-step:nth-child(3) .workflow-number {
+    color: var(--green);
+}
+
+body.light-mode .how-it-works-page .workflow-step:nth-child(5) .workflow-number {
+    color: var(--orange);
+}
+
+body.light-mode .how-it-works-page .workflow-arrow {
+    color: #7b91a7;
+}
+
+/* Model cards */
+
+body.light-mode .how-it-works-page .how-model-card {
+    background: #ffffff;
+    border-color: #dce5ed;
+    box-shadow: 0 18px 45px rgba(37,60,90,.07);
+}
+
+body.light-mode .how-it-works-page .model-a-explanation {
+    background: linear-gradient(145deg,#ffffff,#f3f9ff);
+    border-color: var(--blue-border);
+}
+
+body.light-mode .how-it-works-page .model-b-explanation {
+    background: linear-gradient(145deg,#ffffff,#effcf8);
+    border-color: var(--green-border);
+}
+
+body.light-mode .how-it-works-page .model-a-explanation .model-label {
+    color: var(--blue);
+}
+
+body.light-mode .how-it-works-page .model-b-explanation .model-label {
+    color: var(--green);
+}
+
+body.light-mode .how-it-works-page .model-a-explanation .model-badge {
+    color: #075f9f;
+    background: var(--blue-soft);
+    border-color: var(--blue-border);
+}
+
+body.light-mode .how-it-works-page .model-b-explanation .model-badge {
+    color: var(--green);
+    background: var(--green-soft);
+    border-color: var(--green-border);
+}
+
+/* Pipelines */
+
+body.light-mode .how-it-works-page .how-flow-section {
+    background: #f4f9fd;
+    border-color: #dce8f1;
+}
+
+body.light-mode .how-it-works-page .how-flow .flow-box {
+    background: #ffffff;
+    border-color: #d8e4ee;
+    color: var(--light-text);
+    box-shadow: 0 12px 30px rgba(37,60,90,.06);
+}
+
+body.light-mode .how-it-works-page .how-flow .flow-box:nth-of-type(1) {
+    background: linear-gradient(145deg,#ffffff,#f1f8ff);
+    border-color: var(--blue-border);
+}
+
+body.light-mode .how-it-works-page .how-flow .flow-box:nth-of-type(2) {
+    background: linear-gradient(145deg,#ffffff,#effcf8);
+    border-color: var(--green-border);
+}
+
+body.light-mode .how-it-works-page .how-flow .flow-box:nth-of-type(3) {
+    background: linear-gradient(145deg,#ffffff,#f8faff);
+    border-color: #cfdaf0;
+}
+
+body.light-mode .how-it-works-page .how-flow .flow-box:nth-of-type(4) {
+    background: linear-gradient(145deg,#fffaf5,#fff7ed);
+    border-color: var(--orange-border);
+}
+
+body.light-mode .how-it-works-page .how-flow .flow-box strong {
+    color: var(--light-text);
+}
+
+body.light-mode .how-it-works-page .how-flow .flow-box span:not(.flow-step-number) {
+    color: #66778e;
+}
+
+body.light-mode .how-it-works-page .flow-step-number {
+    color: var(--blue);
+    background: var(--blue-soft);
+    border-color: var(--blue-border);
+}
+
+body.light-mode .how-it-works-page .flow-line {
+    color: #7b91a7;
+}
+
+body.light-mode .how-it-works-page .flow-result {
+    background: linear-gradient(145deg,#fffaf4,#fff7ed);
+    border-color: var(--orange-border);
+}
+
+body.light-mode .how-it-works-page .flow-result strong {
+    color: var(--orange);
+}
+
+body.light-mode .how-it-works-page .flow-control {
+    background: #ffffff;
+    color: #344054;
+    border-color: #cdd9e6;
+}
+
+body.light-mode .how-it-works-page .flow-control:hover {
+    background: #eaf5ff;
+    color: #075f9f;
+    border-color: var(--blue-border);
+}
+
+body.light-mode .how-it-works-page .flow-scroll-hint {
+    color: #718096;
+}
+
+/* Fallback */
+
+body.light-mode .how-it-works-page .fallback-panel {
+    background: #f8fbff;
+    border-color: #dbe5ee;
+}
+
+body.light-mode .how-it-works-page .fallback-flow span {
+    background: #eef4f8;
+    color: #344054;
+}
+
+/* Comparison */
+
+body.light-mode .how-it-works-page .comparison-explanation {
+    background: linear-gradient(145deg,#fffaf4,#ffffff);
+    border-color: var(--orange-border);
+    box-shadow: 0 18px 45px rgba(37,60,90,.07);
+}
+
+body.light-mode .how-it-works-page .comparison-model:first-child {
+    background: linear-gradient(145deg,#ffffff,#f1f8ff);
+    border-color: var(--blue-border);
+}
+
+body.light-mode .how-it-works-page .comparison-model:last-child {
+    background: linear-gradient(145deg,#ffffff,#effcf8);
+    border-color: var(--green-border);
+}
+
+body.light-mode .how-it-works-page .comparison-model span {
+    color: var(--green);
+}
+
+body.light-mode .how-it-works-page .comparison-model strong {
+    color: var(--light-text);
+}
+
+body.light-mode .how-it-works-page .comparison-symbol {
+    color: var(--orange);
+}
+
+body.light-mode .how-it-works-page .comparison-items > div {
+    background: #fffaf5;
+    border-color: var(--orange-border);
+}
+
+body.light-mode .how-it-works-page .comparison-items strong {
+    color: var(--orange);
+}
+
+body.light-mode .how-it-works-page .comparison-items span {
+    color: #66778e;
+}
+
+/* Learning */
+
+body.light-mode .how-it-works-page .learning-section {
+    background: linear-gradient(145deg,#fffaff,#faf5ff);
+    border-color: var(--purple-border);
+    box-shadow: 0 18px 45px rgba(37,60,90,.07);
+}
+
+body.light-mode .how-it-works-page .learning-note {
+    background: #f4fff9;
+    border-left-color: var(--green);
+}
+
+body.light-mode .how-it-works-page .learning-grid > div {
+    background: #ffffff;
+    border-color: var(--purple-border);
+}
+
+body.light-mode .how-it-works-page .learning-grid strong {
+    color: var(--purple);
+}
+
+body.light-mode .how-it-works-page .learning-grid span {
+    color: #66778e;
+}
+
+body.light-mode .how-it-works-page .how-flow {
+    scrollbar-color: #9fc6e7 #eaf1f6;
+}
+
+body.light-mode .how-it-works-page .how-flow::-webkit-scrollbar-track {
+    background: #eaf1f6;
+}
+
+body.light-mode .how-it-works-page .how-flow::-webkit-scrollbar-thumb {
+    background: #9fc6e7;
+}
+
+/* ---------------------------------------------------------
+   COMMON
+   --------------------------------------------------------- */
+
+body.light-mode button {
+    color: #344054;
+}
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 800px) {
+
+    body.light-mode .how-it-works-page .how-model-card,
+    body.light-mode .how-it-works-page .comparison-explanation,
+    body.light-mode .how-it-works-page .learning-section {
+        box-shadow: 0 12px 28px rgba(37,60,90,.06);
+    }
+
+    body.light-mode .how-it-works-page .how-flow-section {
+        padding: 14px;
+    }
+}
+
+/* =========================================================
+   LIGHT MODE — GLOBAL BACKGROUND
+   Cool blue-gray presentation background.
+   ========================================================= */
+
+html.light-mode,
+body.light-mode {
+    background:
+        radial-gradient(
+            circle at 50% 5%,
+            rgba(42, 126, 174, 0.22),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 8% 70%,
+            rgba(72, 122, 164, 0.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 92% 82%,
+            rgba(66, 106, 145, 0.12),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #dbe8f2 0%,
+            #e7eff6 48%,
+            #d5e1eb 100%
+        );
+
+    background-attachment: fixed;
+    color: #172033;
+}
+
+/* =========================================================
+   LIGHT MODE — PREDICTION FORM SURFACE
+   Cool blue-gray presentation palette
+   Visual only — prediction logic is untouched.
+   ========================================================= */
+
+body.light-mode .prediction-card {
+    background:
+        linear-gradient(
+            145deg,
+            #f9fbfd 0%,
+            #f4f8fc 100%
+        );
+
+    border-color: #cbd9e6;
+
+    box-shadow:
+        0 22px 55px rgba(37, 60, 90, 0.09),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+
+/* ---------------------------------------------------------
+   FORM HEADING
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card h2,
+body.light-mode .prediction-card h3 {
+    color: #172033;
+}
+
+body.light-mode .prediction-card > p {
+    color: #5f7690;
+}
+
+
+/* ---------------------------------------------------------
+   SECTION DIVIDERS
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card hr,
+body.light-mode .prediction-card .form-divider {
+    border-color: #d8e3ec;
+}
+
+
+/* ---------------------------------------------------------
+   SECTION LABELS
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card .section-title,
+body.light-mode .prediction-card .form-section-title {
+    color: #155b8a;
+}
+
+
+/* ---------------------------------------------------------
+   FORM LABELS
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card label {
+    color: #34495e;
+}
+
+
+/* ---------------------------------------------------------
+   INPUTS + SELECTS
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card input,
+body.light-mode .prediction-card select,
+body.light-mode .prediction-card textarea {
+    background: #f4f8fc;
+    color: #172033;
+
+    border-color: #c9d9e6;
+
+    box-shadow:
+        inset 0 1px 2px rgba(37, 60, 90, 0.025);
+
+    transition:
+        border-color 180ms ease,
+        background 180ms ease,
+        box-shadow 180ms ease;
+}
+
+
+/* Placeholder text */
+
+body.light-mode .prediction-card input::placeholder,
+body.light-mode .prediction-card textarea::placeholder {
+    color: #91a4b7;
+}
+
+
+/* Hover */
+
+body.light-mode .prediction-card input:hover,
+body.light-mode .prediction-card select:hover,
+body.light-mode .prediction-card textarea:hover {
+    border-color: #a9c5da;
+    background: #f8fbfe;
+}
+
+
+/* Focus */
+
+body.light-mode .prediction-card input:focus,
+body.light-mode .prediction-card select:focus,
+body.light-mode .prediction-card textarea:focus {
+    background: #eef7ff;
+
+    border-color: #1683c7;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 131, 199, 0.10);
+
+    outline: none;
+}
+
+
+/* ---------------------------------------------------------
+   AUTOMATIC / READONLY VEHICLE AGE
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card input[readonly] {
+    background:
+        linear-gradient(
+            135deg,
+            #eaf8f5,
+            #f2fbfa
+        );
+
+    border-color: #9eddd3;
+
+    color: #087f73;
+}
+
+
+/* ---------------------------------------------------------
+   FORM HELPER TEXT
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card .help-text,
+body.light-mode .prediction-card small {
+    color: #71869b;
+}
+
+
+/* ---------------------------------------------------------
+   PRIMARY PREDICT BUTTON
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card .primary-btn {
+    background: #087f73;
+    color: #ffffff;
+
+    border-color: #087f73;
+
+    box-shadow:
+        0 10px 24px rgba(8, 127, 115, 0.18);
+}
+
+body.light-mode .prediction-card .primary-btn:hover {
+    background: #06695f;
+    border-color: #06695f;
+
+    box-shadow:
+        0 14px 30px rgba(8, 127, 115, 0.24);
+}
+
+
+/* ---------------------------------------------------------
+   FORM ICON / CAR ICON
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card .section-icon,
+body.light-mode .prediction-card .card-icon {
+    background: #eaf4ff;
+    border-color: #c5def3;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+    body.light-mode .prediction-card {
+        box-shadow:
+            0 14px 35px rgba(37, 60, 90, 0.08);
+    }
+
+}
+
+/* =========================================================
+   LIGHT MODE — FORM CARD DEPTH
+   Slightly darker than the page background so the form
+   visually separates from the surrounding canvas.
+   ========================================================= */
+
+body.light-mode .prediction-card {
+    background:
+        linear-gradient(
+            145deg,
+            #edf3f8 0%,
+            #e5edf4 100%
+        );
+
+    border-color: #c4d4e1;
+
+    box-shadow:
+        0 22px 55px rgba(37, 60, 90, 0.11),
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+
+/* Keep the actual controls lighter than the card */
+
+body.light-mode .prediction-card input,
+body.light-mode .prediction-card select,
+body.light-mode .prediction-card textarea {
+    background: #f7fafd;
+}
+
+
+/* Slightly darker section separators */
+
+body.light-mode .prediction-card hr,
+body.light-mode .prediction-card .form-divider {
+    border-color: #cbd9e5;
+}
+
+/* =========================================================
+   FINAL LIGHT MODE — BLUE GRAY PRESENTATION THEME
+   Visual layer only. Dark mode remains unchanged.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   PAGE BACKGROUND
+   --------------------------------------------------------- */
+
+html.light-mode,
+body.light-mode {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(112, 158, 195, 0.18),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 8% 72%,
+            rgba(92, 139, 177, 0.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 92% 78%,
+            rgba(76, 119, 157, 0.10),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #c4d4e1 0%,
+            #d5e1eb 48%,
+            #becfdd 100%
+        );
+
+    color: #16263d;
+}
+
+
+/* ---------------------------------------------------------
+   TOPBAR
+   --------------------------------------------------------- */
+
+body.light-mode .topbar {
+    background: rgba(232, 240, 247, 0.96);
+    border-bottom: 1px solid #b8cad9;
+
+    box-shadow:
+        0 4px 18px rgba(40, 65, 90, 0.12);
+
+    backdrop-filter: blur(14px);
+}
+
+body.light-mode .topbar-link {
+    color: #526b84;
+}
+
+body.light-mode .topbar-link:hover,
+body.light-mode .topbar-link.active {
+    color: #075f9f;
+    background: #dcecf8;
+}
+
+body.light-mode .topbar-link.active::after {
+    background: #1683c7;
+}
+
+body.light-mode .system-status {
+    background: #f3f7fa;
+    border-color: #c2d2df;
+    color: #40566d;
+}
+
+body.light-mode .github-link {
+    color: #34495e;
+}
+
+body.light-mode .github-link:hover {
+    color: #087f73;
+}
+
+
+/* ---------------------------------------------------------
+   THEME TOGGLE — CLEAN PILL BUTTON
+   --------------------------------------------------------- */
+
+body.light-mode .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    min-width: 82px;
+    height: 36px;
+    padding: 0 13px;
+
+    border: 1px solid #b7c9d8;
+    border-radius: 999px;
+
+    background: #f4f8fb;
+    color: #34495e;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 2px 8px rgba(40, 65, 90, 0.08);
+
+    transition:
+        background 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease;
+}
+
+body.light-mode .theme-toggle:hover {
+    background: #ffffff;
+    border-color: #91abc0;
+
+    box-shadow:
+        0 5px 14px rgba(40, 65, 90, 0.13);
+
+    transform: translateY(-1px);
+}
+
+body.light-mode .theme-toggle:active {
+    transform: translateY(0);
+}
+
+body.light-mode .theme-toggle-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 21px;
+    height: 21px;
+
+    border-radius: 50%;
+    background: #dceaf5;
+
+    font-size: 13px;
+}
+
+body.light-mode .theme-toggle-label {
+    line-height: 1;
+}
+
+
+/* ---------------------------------------------------------
+   HERO
+   --------------------------------------------------------- */
+
+body.light-mode .hero h1,
+body.light-mode .page h1 {
+    color: #14243b;
+}
+
+body.light-mode .hero p,
+body.light-mode .page-subtitle {
+    color: #526b84;
+}
+
+
+/* ---------------------------------------------------------
+   PREDICTION FORM CARD
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(235, 242, 248, 0.97),
+            rgba(220, 231, 240, 0.96)
+        );
+
+    border: 1px solid #b9ccd9;
+
+    box-shadow:
+        0 22px 50px rgba(38, 65, 90, 0.16);
+}
+
+
+/* Form heading */
+
+body.light-mode .prediction-card h2,
+body.light-mode .prediction-card h3 {
+    color: #16263d;
+}
+
+body.light-mode .prediction-card > p {
+    color: #526b84;
+}
+
+
+/* ---------------------------------------------------------
+   FORM SECTION HEADINGS
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card .section-title,
+body.light-mode .prediction-card .form-section-title {
+    color: #16476f;
+}
+
+body.light-mode .prediction-card hr,
+body.light-mode .prediction-card .form-divider {
+    border-color: #b7cad9;
+}
+
+
+/* ---------------------------------------------------------
+   LABELS
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card label {
+    color: #29425b;
+}
+
+
+/* ---------------------------------------------------------
+   INPUTS
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card input,
+body.light-mode .prediction-card select,
+body.light-mode .prediction-card textarea {
+    background: #f4f8fb;
+    color: #16263d;
+
+    border: 1px solid #b9cddd;
+
+    box-shadow:
+        inset 0 1px 2px rgba(35, 60, 82, 0.04);
+}
+
+body.light-mode .prediction-card input:hover,
+body.light-mode .prediction-card select:hover,
+body.light-mode .prediction-card textarea:hover {
+    background: #f8fbfd;
+    border-color: #8faec5;
+}
+
+body.light-mode .prediction-card input:focus,
+body.light-mode .prediction-card select:focus,
+body.light-mode .prediction-card textarea:focus {
+    background: #eef7ff;
+    border-color: #1683c7;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 131, 199, 0.12);
+
+    outline: none;
+}
+
+body.light-mode .prediction-card input::placeholder,
+body.light-mode .prediction-card textarea::placeholder {
+    color: #8398ab;
+}
+
+
+/* ---------------------------------------------------------
+   AUTOMATIC VEHICLE AGE
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card input[readonly] {
+    background:
+        linear-gradient(
+            135deg,
+            #dff3ef,
+            #eaf8f5
+        );
+
+    border-color: #8ed5ca;
+    color: #087f73;
+}
+
+
+/* ---------------------------------------------------------
+   HELPER TEXT
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card small,
+body.light-mode .prediction-card .help-text {
+    color: #698197;
+}
+
+
+/* ---------------------------------------------------------
+   FORM ICON
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card .section-icon,
+body.light-mode .prediction-card .card-icon {
+    background: #dcecf8;
+    border-color: #b8d3e8;
+}
+
+
+/* ---------------------------------------------------------
+   PRIMARY BUTTON
+   --------------------------------------------------------- */
+
+body.light-mode .prediction-card .primary-btn {
+    background: #087f73;
+    color: #ffffff;
+    border-color: #087f73;
+
+    box-shadow:
+        0 10px 24px rgba(8, 127, 115, 0.20);
+}
+
+body.light-mode .prediction-card .primary-btn:hover {
+    background: #06695f;
+    border-color: #06695f;
+
+    box-shadow:
+        0 14px 30px rgba(8, 127, 115, 0.25);
+}
+
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+   --------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+    body.light-mode .prediction-card {
+        box-shadow:
+            0 16px 36px rgba(38, 65, 90, 0.12);
+    }
+
+    body.light-mode .theme-toggle {
+        min-width: 74px;
+        padding: 0 10px;
+    }
+
+}
+
+/* =========================================================
+   FINAL FORM CARD CONTRAST
+   ========================================================= */
+
+body.light-mode .prediction-card {
+    background:
+        linear-gradient(
+            145deg,
+            #eaf1f7 0%,
+            #e2ebf2 100%
+        );
+
+    border-color: #b5c9d8;
+
+    box-shadow:
+        0 24px 55px rgba(38, 65, 90, 0.18);
+}
+
+/* =========================================================
+   RESULTS HISTORY — LIGHT MODE
+   Fix saved prediction cards inside Local History.
+   ========================================================= */
+
+body.light-mode .history-content {
+    color: #16263d;
+}
+
+
+/* Main saved result container */
+
+body.light-mode .history-content .result-screen,
+body.light-mode .history-content .result-container {
+    background: transparent;
+    color: #16263d;
+}
+
+
+/* Comparison section */
+
+body.light-mode .history-content .model-comparison,
+body.light-mode .history-content .comparison-summary {
+    background: #eaf1f7;
+    border-color: #b8cad8;
+    color: #16263d;
+}
+
+
+/* Model cards */
+
+body.light-mode .history-content .prediction-card,
+body.light-mode .history-content .model-card,
+body.light-mode .history-content .result-card {
+    background: #f4f8fb;
+    border-color: #bfd1df;
+    color: #16263d;
+
+    box-shadow:
+        0 10px 25px rgba(38, 65, 90, 0.08);
+}
+
+
+/* Headings */
+
+body.light-mode .history-content h1,
+body.light-mode .history-content h2,
+body.light-mode .history-content h3,
+body.light-mode .history-content h4,
+body.light-mode .history-content strong {
+    color: #16263d;
+}
+
+
+/* Normal text */
+
+body.light-mode .history-content p,
+body.light-mode .history-content span {
+    color: #526b84;
+}
+
+
+/* Prices */
+
+body.light-mode .history-content .price,
+body.light-mode .history-content #modelAPrice,
+body.light-mode .history-content #modelBPrice {
+    color: #087f73;
+}
+
+
+/* Market analysis */
+
+body.light-mode .history-content .model-b-analysis,
+body.light-mode .history-content .evidence-card {
+    background: #e7f5f2;
+    border-color: #9eddd3;
+}
+
+
+/* Search/source section */
+
+body.light-mode .history-content .sources,
+body.light-mode .history-content .search-card {
+    background: #f5f8fb;
+    border-color: #c5d5e1;
+}
+
+
+/* Source links */
+
+body.light-mode .history-content a {
+    color: #087f73;
+}
+
+body.light-mode .history-content a:hover {
+    color: #06695f;
+}
+
+
+/* Comparison summary */
+
+body.light-mode .history-content .comparison-summary {
+    background:
+        linear-gradient(
+            145deg,
+            #edf3f8,
+            #e4edf4
+        );
+
+    border: 1px solid #b9ccd9;
+}
+
+
+/* Error state inside saved result */
+
+body.light-mode .history-content .error,
+body.light-mode .history-content .error-card,
+body.light-mode .history-content .error-panel {
+    background: #fff3f1;
+    border-color: #f0c5bd;
+    color: #8a271d;
+}
+
+
+/* Remove dark glow/shadow from saved cards */
+
+body.light-mode .history-content .prediction-card::after,
+body.light-mode .history-content .model-card::after,
+body.light-mode .history-content .result-card::after {
+    opacity: 0.25;
+}
+
+/* =========================================================
+   RESULTS HISTORY — SAVED RESULT WRAPPER
+   Light-mode fix for the complete stored prediction.
+   ========================================================= */
+
+body.light-mode .history-content .result-screen,
+body.light-mode .history-content .flow-screen {
+    background: #e8f1f7;
+    color: #16263d;
+    border-radius: 22px;
+    border: 1px solid #bfd1df;
+    box-shadow:
+        0 14px 32px rgba(38, 65, 90, 0.08);
+}
+
+
+/* Inner result shell */
+
+body.light-mode .history-content .flow-shell {
+    background: transparent;
+    color: #16263d;
+}
+
+
+/* Result heading */
+
+body.light-mode .history-content .flow-kicker {
+    color: #087f73;
+}
+
+
+body.light-mode .history-content .flow-title {
+    color: #16263d;
+}
+
+
+body.light-mode .history-content .flow-subtitle {
+    color: #607891;
+}
+
+
+/* Keep the actual prediction area light */
+
+body.light-mode .history-content .result-container {
+    background: transparent;
+    color: #16263d;
+}
+
+
+/* Remove old dark result glow */
+
+body.light-mode .history-content .result-screen::before,
+body.light-mode .history-content .result-screen::after,
+body.light-mode .history-content .flow-screen::before,
+body.light-mode .history-content .flow-screen::after {
+    opacity: 0;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    body.light-mode .history-content .result-screen,
+    body.light-mode .history-content .flow-screen {
+        border-radius: 16px;
+    }
+
+}
+
+/* =========================================================
+   RESULTS HISTORY — ACTUAL SAVED .result FIX
+   The saved prediction itself uses the .result class.
+   ========================================================= */
+
+body.light-mode .history-content > .result {
+    background:
+        linear-gradient(
+            145deg,
+            #f4f8fb,
+            #e8f1f7
+        );
+
+    border-color: #b9ccd9;
+
+    color: #16263d;
+
+    box-shadow:
+        0 16px 36px rgba(38, 65, 90, 0.10);
+}
+
+
+/* Top accent line */
+
+body.light-mode .history-content > .result::before {
+    background: #1683c7;
+    opacity: 0.55;
+}
+
+
+/* Result heading */
+
+body.light-mode .history-content > .result .comparison-title {
+    color: #58718b;
+}
+
+
+/* Result description */
+
+body.light-mode .history-content > .result .result-note {
+    color: #66778e;
+}
+
+
+/* Make sure the comparison cards remain clean */
+
+body.light-mode .history-content > .result .model-card {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f4f8fb
+        );
+
+    border-color: #c7d8e5;
+
+    color: #16263d;
+}
+
+
+/* ML card */
+
+body.light-mode .history-content > .result .model-a-card {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f1f8ff
+        );
+
+    border-color: #b9dcf6;
+}
+
+
+/* Market AI card */
+
+body.light-mode .history-content > .result .model-b-card {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #effcf8
+        );
+
+    border-color: #b8e8df;
+}
+
+
+/* Card headings */
+
+body.light-mode .history-content > .result .model-card h3 {
+    color: #16263d;
+}
+
+
+/* Prices */
+
+body.light-mode .history-content > .result .model-price {
+    color: #087f73;
+}
+
+
+/* Description text */
+
+body.light-mode .history-content > .result .model-description,
+body.light-mode .history-content > .result .model-detail {
+    color: #66778e;
+}
+
+
+/* Comparison difference */
+
+body.light-mode .history-content > .result .comparison-summary {
+    background:
+        linear-gradient(
+            145deg,
+            #fffaf4,
+            #fff7ed
+        );
+
+    border-color: #f7cfa8;
+}
+
+body.light-mode .history-content > .result .comparison-difference {
+    color: #c45a0a;
+}
+
+
+/* Market AI analysis */
+
+body.light-mode .history-content > .result .model-b-analysis {
+    background:
+        linear-gradient(
+            145deg,
+            #effcf8,
+            #f7fffd
+        );
+
+    border-color: #b8e8df;
+}
+
+
+/* Sources */
+
+body.light-mode .history-content > .result .prediction-sources {
+    background:
+        linear-gradient(
+            145deg,
+            #faf5ff,
+            #ffffff
+        );
+
+    border-color: #e6c9f7;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    body.light-mode .history-content > .result {
+        border-radius: 18px;
+    }
+
+}
