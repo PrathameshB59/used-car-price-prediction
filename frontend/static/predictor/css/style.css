@@ -32,7 +32,7 @@
    ========================================================= */
 
 .topbar {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -4113,19 +4113,29 @@ body.light-mode .history-card {
     background:
         linear-gradient(
             145deg,
-            #ffffff,
-            #f7fbff
+            #eef4f8,
+            #e2edf4
         );
-    border-color: #d6e1eb;
-    box-shadow: 0 14px 32px rgba(37,60,90,.07);
+    border: 1px solid #b7cbd9;
+    border-radius: 20px;
+    box-shadow: 0 14px 32px rgba(38, 65, 90, 0.10);
+    overflow: hidden;
 }
 
 body.light-mode .history-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 20px;
     color: #66778e;
-    border-bottom-color: #e1e8ef;
+    background: rgba(224, 235, 243, 0.72);
+    border-bottom: 1px solid #c5d5e0;
 }
 
 body.light-mode .history-content {
+    padding: 0 20px 20px;
+    background: transparent;
     color: var(--light-text);
 }
 
@@ -5287,16 +5297,17 @@ body.light-mode .history-content > .result {
     background:
         linear-gradient(
             145deg,
-            #f4f8fb,
-            #e8f1f7
+            #eef4f8,
+            #e2edf4
         );
 
-    border-color: #b9ccd9;
+    margin: 20px auto 0;
+    border: 1px solid #b7cbd9;
 
     color: #16263d;
 
     box-shadow:
-        0 16px 36px rgba(38, 65, 90, 0.10);
+        0 18px 40px rgba(38, 65, 90, 0.12);
 }
 
 
@@ -5344,11 +5355,11 @@ body.light-mode .history-content > .result .model-a-card {
     background:
         linear-gradient(
             145deg,
-            #ffffff,
-            #f1f8ff
+            #f5f9fc,
+            #e7f1f8
         );
 
-    border-color: #b9dcf6;
+    border-color: #b8d2e3;
 }
 
 
@@ -5358,11 +5369,11 @@ body.light-mode .history-content > .result .model-b-card {
     background:
         linear-gradient(
             145deg,
-            #ffffff,
-            #effcf8
+            #f1faf7,
+            #e4f5ef
         );
 
-    border-color: #b8e8df;
+    border-color: #a8d9cc;
 }
 
 
@@ -5394,11 +5405,12 @@ body.light-mode .history-content > .result .comparison-summary {
     background:
         linear-gradient(
             145deg,
-            #fffaf4,
-            #fff7ed
+            #fff8ed,
+            #ffefd9
         );
 
-    border-color: #f7cfa8;
+    border-color: #e4c69c;
+    color: #4b3520;
 }
 
 body.light-mode .history-content > .result .comparison-difference {
@@ -5426,11 +5438,12 @@ body.light-mode .history-content > .result .prediction-sources {
     background:
         linear-gradient(
             145deg,
-            #faf5ff,
-            #ffffff
+            #f7f3fb,
+            #eee7f7
         );
 
-    border-color: #e6c9f7;
+    border-color: #cdb9df;
+    color: #3d3150;
 }
 
 
@@ -5443,253 +5456,6 @@ body.light-mode .history-content > .result .prediction-sources {
     }
 
 }
-
-/* =========================================================
-   UI BUG FIX — TOPBAR OVERLAP + RESULTS HISTORY LIGHT MODE
-   ========================================================= */
-
-/* ---------------------------------------------------------
-   1. Keep the topbar in normal layout flow.
-   Sticky keeps it visible while scrolling without covering
-   the content underneath it.
-   --------------------------------------------------------- */
-
-.topbar {
-    position: sticky !important;
-    top: 0;
-    z-index: 1000;
-}
-
-
-/* ---------------------------------------------------------
-   2. RESULTS HISTORY — remove the plain white wrapper
-   --------------------------------------------------------- */
-
-body.light-mode .history-content {
-    background: transparent;
-    color: #16263d;
-}
-
-
-/* ---------------------------------------------------------
-   3. RESULTS HISTORY — saved prediction card
-   --------------------------------------------------------- */
-
-body.light-mode .history-content > .result {
-    background:
-        linear-gradient(
-            145deg,
-            #eef4f8 0%,
-            #e2edf4 100%
-        );
-
-    border: 1px solid #b7cbd9;
-
-    color: #16263d;
-
-    box-shadow:
-        0 18px 40px rgba(38, 65, 90, 0.12);
-}
-
-
-/* ---------------------------------------------------------
-   4. RESULTS HISTORY — keep inner Model A card blue
-   --------------------------------------------------------- */
-
-body.light-mode .history-content > .result .model-a-card {
-    background:
-        linear-gradient(
-            145deg,
-            #f5f9fc,
-            #e7f1f8
-        );
-
-    border-color: #b8d2e3;
-    color: #16263d;
-}
-
-
-/* ---------------------------------------------------------
-   5. RESULTS HISTORY — keep Model B card green
-   --------------------------------------------------------- */
-
-body.light-mode .history-content > .result .model-b-card {
-    background:
-        linear-gradient(
-            145deg,
-            #f1faf7,
-            #e4f5ef
-        );
-
-    border-color: #a8d9cc;
-    color: #16263d;
-}
-
-
-/* ---------------------------------------------------------
-   6. RESULTS HISTORY — comparison area orange
-   --------------------------------------------------------- */
-
-body.light-mode .history-content > .result .comparison-summary {
-    background:
-        linear-gradient(
-            145deg,
-            #fff8ed,
-            #ffefd9
-        );
-
-    border-color: #e4c69c;
-    color: #4b3520;
-}
-
-
-/* ---------------------------------------------------------
-   7. RESULTS HISTORY — sources area purple
-   --------------------------------------------------------- */
-
-body.light-mode .history-content > .result .prediction-sources {
-    background:
-        linear-gradient(
-            145deg,
-            #f7f3fb,
-            #eee7f7
-        );
-
-    border-color: #cdb9df;
-    color: #3d3150;
-}
-
-
-/* ---------------------------------------------------------
-   8. CLEAR HISTORY BUTTON
-   --------------------------------------------------------- */
-
-body.light-mode #clear-history {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    margin: 10px 0 18px;
-
-    min-height: 38px;
-    padding: 0 16px;
-
-    border: 1px solid #b9cbd8;
-    border-radius: 10px;
-
-    background: #eef4f8;
-    color: #385066;
-
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 3px 10px rgba(38, 65, 90, 0.08);
-
-    transition:
-        background 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease,
-        transform 180ms ease;
-}
-
-body.light-mode #clear-history:hover {
-    background: #ffffff;
-    border-color: #91aec2;
-
-    box-shadow:
-        0 6px 16px rgba(38, 65, 90, 0.13);
-
-    transform: translateY(-1px);
-}
-
-body.light-mode #clear-history:active {
-    transform: translateY(0);
-}
-
-
-/* ---------------------------------------------------------
-   9. DARK MODE — make sure Clear History is also polished
-   --------------------------------------------------------- */
-
-body:not(.light-mode) #clear-history {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    margin: 10px 0 18px;
-
-    min-height: 38px;
-    padding: 0 16px;
-
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    border-radius: 10px;
-
-    background: #111a2e;
-    color: #c7d2e2;
-
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition:
-        background 180ms ease,
-        border-color 180ms ease,
-        transform 180ms ease;
-}
-
-body:not(.light-mode) #clear-history:hover {
-    background: #17243b;
-    border-color: rgba(24, 216, 192, 0.35);
-    transform: translateY(-1px);
-}
-
-/* =========================================================
-   RESULTS HISTORY — FINAL LIGHT MODE FIX
-   ========================================================= */
-
-body.light-mode .history-card {
-    background:
-        linear-gradient(
-            145deg,
-            #eef4f8 0%,
-            #e2edf4 100%
-        );
-
-    border: 1px solid #b7cbd9;
-    border-radius: 20px;
-
-    box-shadow:
-        0 14px 32px rgba(38, 65, 90, 0.10);
-
-    overflow: hidden;
-}
-
-body.light-mode .history-card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 14px 20px;
-
-    background: rgba(224, 235, 243, 0.72);
-    border-bottom: 1px solid #c5d5e0;
-}
-
-body.light-mode .history-content {
-    padding: 0 20px 20px;
-    background: transparent;
-}
-
-body.light-mode .history-content > .result {
-    margin: 20px auto 0;
-}
-
 
 /* Clear History */
 

@@ -15,6 +15,8 @@
 - Preserved the release state with `backup/before-presentation-cleanup`.
 - Removed tracked historical UI snapshots, duplicate documentation versions,
   and obsolete backup/recovery copies from the presentation branch.
+- Consolidated duplicate Results-history CSS into the original selectors and
+  removed obsolete Clear history selectors.
 
 ## 2026-09-16 — Frontend Theme & UI Milestone
 
