@@ -54,7 +54,8 @@ Model B is designed as an AI-assisted market research pipeline rather than a mod
                              ↓
                      Separate results
                              ↓
-                   Model A | Model B
+                   Model A | Model B\
+```
 
 
 ## Frontend Integration Status — 2026-09-15
@@ -81,3 +82,35 @@ ML Price Estimate + Market AI Estimate
 Local Prediction History
       ↓
 Results Dashboard
+
+## Frontend UI Milestone — 2026-09-16
+
+### Completed
+
+- [x] Separate Results dashboard
+- [x] Local prediction history with browser `localStorage`
+- [x] Separate How It Works page
+- [x] Topbar-only navigation
+- [x] ML Price Estimate terminology
+- [x] Market AI Estimate terminology
+- [x] Connected Model A visual pipeline
+- [x] Connected Model B visual pipeline
+- [x] Light/dark theme toggle
+- [x] Persistent theme preference
+- [x] Blue-gray light-mode visual system
+- [x] Semantic colors for major How It Works sections
+- [x] Before/after Git checkpoints
+- [x] UI milestone pushed to `feature/ui-redesign`
+
+### Architecture Boundary
+
+The frontend work changes presentation and browser-side state only.
+
+```text
+Frontend
+   ↓
+Form / UI state / theme / local history
+   ↓
+Django
+   ↓
+Model A + Model B

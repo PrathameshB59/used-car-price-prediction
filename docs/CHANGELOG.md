@@ -1,5 +1,34 @@
 # Changelog
 
+## 2026-09-16 — Frontend Theme & UI Milestone
+
+### Completed
+
+- Light/dark theme toggle added to the main predictor interface.
+- Theme preference is persisted in browser `localStorage`.
+- Light mode uses a blue-gray application background with lighter cards and semantic accent colors.
+- Separate Results dashboard remains the dedicated page for saved predictions.
+- Separate How It Works page remains the dedicated explanation page.
+- Topbar-only navigation retained across the predictor frontend.
+- How It Works presents Model A and Model B as connected visual pipelines.
+- Frontend presentation changes remain separate from Django prediction logic.
+- Before/after Git checkpoints created for the UI milestone.
+- UI milestone committed as `bc7b9de`.
+
+### Theme Flow
+
+```text
+User selects Light / Dark
+        ↓
+JavaScript updates theme class
+        ↓
+CSS applies the selected visual system
+        ↓
+localStorage stores the preference
+        ↓
+Next page load restores the preference
+```
+
 ## 2026-09-15 — Frontend Dashboard & UX Refinement
 
 ### Completed

@@ -128,3 +128,20 @@ This makes the difference between the machine-learning prediction and the market
 The frontend reinforced the same project principle used throughout the AIML work:
 
 WHY? → WHAT concept? → HOW does the code implement it? → WHAT does the user see? → HOW does it connect to the ML system?
+
+## Theme Persistence
+
+The frontend theme introduced a useful browser-state concept.
+
+The selected theme is not sent to Django. JavaScript manages it in the browser:
+
+```text
+User clicks theme toggle
+        ↓
+JavaScript determines Light / Dark
+        ↓
+CSS class is applied
+        ↓
+localStorage saves "light" or "dark"
+        ↓
+Next page load reads the saved value

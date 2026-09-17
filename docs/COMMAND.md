@@ -71,3 +71,10 @@ git checkout -b feature/model-b
 ```
 
 After completing Model B, merge it into `main` and create the next release tag.
+
+## Current Development Branch
+
+The current frontend/UI work is developed on:
+
+```text
+feature/ui-redesign

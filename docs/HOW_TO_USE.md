@@ -72,3 +72,14 @@ Seller Type: Dealer
 ```
 
 The resulting number is an ML estimate, not a guaranteed selling price.
+
+## Frontend Navigation
+
+The application uses a single topbar for navigation.
+
+```text
+Predict → main prediction form
+Results → saved prediction dashboard
+How It Works → ML and Market AI explanation
+GitHub → project repository
+Theme Toggle → Light / Dark

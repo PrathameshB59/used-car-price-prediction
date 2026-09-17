@@ -53,13 +53,13 @@ The application provides three main user-facing areas:
 
 ```text
 Predict
-→ Enter vehicle details and receive valuation estimates.
+→ Enter vehicle details and receive ML Price Estimate and Market AI Estimate results.
 
 Results
 → Review previous predictions stored locally in the browser.
 
 How It Works
-→ Understand the ML and market-AI valuation pipelines.
+→ Understand the ML and market-AI price prediction pipelines.
 ```
 
 ### Run Locally
