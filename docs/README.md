@@ -1,13 +1,13 @@
 # Indian Used Car Price Prediction
 
-## v0.1.0 — Model A Web MVP
+## v0.4 — Results UI Release
 
 A Django-based AIML project that predicts an estimated used-car price for the Indian market.
 
-### Release
+### Current Release
 
-- **Version:** `v0.1.0`
-- **Release:** Model A Web MVP
+- **Version:** `v0.4`
+- **Release:** Results UI polish and presentation-ready frontend cleanup
 - **Backend:** Django
 - **Frontend:** HTML, CSS, JavaScript
 - **ML:** Random Forest Regression
@@ -81,6 +81,9 @@ Open `http://127.0.0.1:8000/`.
 e435b61 Complete Model A web integration
 ```
 
-### Next Version
+### Presentation Branch
 
-`v0.2.0` is planned for Model B: market-enhanced valuation using current Indian market evidence, with Model A and Model B shown separately.
+`presentation/cleanup` is based on the `v0.4` release and removes historical
+backup copies and duplicated documentation. The release itself remains
+recoverable through the `v0.4` tag and the
+`backup/before-presentation-cleanup` branch.

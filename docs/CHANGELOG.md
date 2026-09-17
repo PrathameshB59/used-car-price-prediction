@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-09-17 — v0.4 Results UI Release & Presentation Cleanup
+
+### Release
+
+- Released `v0.4` from commit `c522391`.
+- Polished the Results history layout in light mode: the fixed topbar no
+  longer overlaps content, saved-prediction headers have usable spacing, and
+  Clear history uses the project button style rather than browser defaults.
+
+### Presentation Branch
+
+- Created `presentation/cleanup` from the `v0.4` release.
+- Preserved the release state with `backup/before-presentation-cleanup`.
+- Removed tracked historical UI snapshots, duplicate documentation versions,
+  and obsolete backup/recovery copies from the presentation branch.
+
 ## 2026-09-16 — Frontend Theme & UI Milestone
 
 ### Completed
