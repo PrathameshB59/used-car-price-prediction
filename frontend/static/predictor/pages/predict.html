@@ -1,0 +1,328 @@
+<section class="card form-card">
+
+    <div class="card-body">
+
+        <div class="section-heading">
+
+            <div>
+                <p class="card-label">
+                    Vehicle information
+                </p>
+
+                <h2 class="card-title">
+                    Enter the car details
+                </h2>
+
+                <p class="card-description">
+                    These values are sent to the Django
+                    prediction API.
+                </p>
+            </div>
+
+        </div>
+
+
+        <form
+            id="predictionForm"
+            novalidate
+        >
+
+            <div class="form-grid">
+
+                <!-- BRAND -->
+
+                <div class="form-group">
+
+                    <label
+                        class="form-label"
+                        for="brand"
+                    >
+                        Brand
+                    </label>
+
+                    <select
+                        id="brand"
+                        name="brand"
+                        class="form-control"
+                        required
+                    >
+                        <option value="">
+                            Select brand
+                        </option>
+
+                        <option>Maruti Suzuki</option>
+                        <option>Hyundai</option>
+                        <option>Honda</option>
+                        <option>Tata</option>
+                        <option>Mahindra</option>
+                        <option>Toyota</option>
+                        <option>Volkswagen</option>
+                        <option>Ford</option>
+                        <option>Renault</option>
+                        <option>Kia</option>
+                        <option>Other / Unknown</option>
+                    </select>
+
+                </div>
+
+
+                <!-- MODEL -->
+
+                <div class="form-group">
+
+                    <label
+                        class="form-label"
+                        for="model"
+                    >
+                        Model
+                    </label>
+
+                    <select
+                        id="model"
+                        name="model"
+                        class="form-control"
+                        required
+                    >
+                        <option value="">
+                            Select model
+                        </option>
+
+                        <option>Swift</option>
+                        <option>Baleno</option>
+                        <option>Alto</option>
+                        <option>City</option>
+                        <option>Creta</option>
+                        <option>Nexon</option>
+                        <option>Scorpio</option>
+                        <option>Fortuner</option>
+                        <option>i20</option>
+                        <option>Other / Unknown</option>
+                    </select>
+
+                </div>
+
+
+                <!-- YEAR -->
+
+                <div class="form-group">
+
+                    <label
+                        class="form-label"
+                        for="year"
+                    >
+                        Manufacturing year
+                    </label>
+
+                    <input
+                        id="year"
+                        name="Year"
+                        class="form-control"
+                        type="number"
+                        min="1990"
+                        max="2026"
+                        placeholder="e.g. 2021"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- AGE -->
+
+                <div class="form-group">
+
+                    <label
+                        class="form-label"
+                        for="age"
+                    >
+                        Vehicle age
+                    </label>
+
+                    <input
+                        id="age"
+                        name="Age"
+                        class="form-control"
+                        type="number"
+                        min="0"
+                        max="50"
+                        readonly
+                        required
+                    >
+
+                    <span class="form-help">
+                        Calculated automatically from the year.
+                    </span>
+
+                </div>
+
+
+                <!-- KM -->
+
+                <div class="form-group">
+
+                    <label
+                        class="form-label"
+                        for="kmDriven"
+                    >
+                        Kilometers driven
+                    </label>
+
+                    <input
+                        id="kmDriven"
+                        name="kmDriven"
+                        class="form-control"
+                        type="number"
+                        min="0"
+                        placeholder="e.g. 45000"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- TRANSMISSION -->
+
+                <div class="form-group">
+
+                    <label
+                        class="form-label"
+                        for="transmission"
+                    >
+                        Transmission
+                    </label>
+
+                    <select
+                        id="transmission"
+                        name="Transmission"
+                        class="form-control"
+                        required
+                    >
+                        <option value="">
+                            Select transmission
+                        </option>
+
+                        <option>Manual</option>
+                        <option>Automatic</option>
+                    </select>
+
+                </div>
+
+
+                <!-- OWNER -->
+
+                <div class="form-group">
+
+                    <label
+                        class="form-label"
+                        for="owner"
+                    >
+                        Owner
+                    </label>
+
+                    <select
+                        id="owner"
+                        name="Owner"
+                        class="form-control"
+                        required
+                    >
+                        <option value="">
+                            Select owner type
+                        </option>
+
+                        <option>First Owner</option>
+                        <option>Second Owner</option>
+                        <option>Third Owner</option>
+                        <option>Fourth & Above Owner</option>
+                    </select>
+
+                </div>
+
+
+                <!-- SELLER -->
+
+                <div class="form-group">
+
+                    <label
+                        class="form-label"
+                        for="sellerType"
+                    >
+                        Seller type
+                    </label>
+
+                    <select
+                        id="sellerType"
+                        name="Seller_Type"
+                        class="form-control"
+                        required
+                    >
+                        <option value="">
+                            Select seller type
+                        </option>
+
+                        <option>Individual</option>
+                        <option>Dealer</option>
+                        <option>Trustmark Dealer</option>
+                    </select>
+
+                </div>
+
+
+                <!-- FUEL -->
+
+                <div class="form-group form-group-full">
+
+                    <label
+                        class="form-label"
+                        for="fuelType"
+                    >
+                        Fuel type
+                    </label>
+
+                    <select
+                        id="fuelType"
+                        name="FuelType"
+                        class="form-control"
+                        required
+                    >
+                        <option value="">
+                            Select fuel type
+                        </option>
+
+                        <option>Petrol</option>
+                        <option>Diesel</option>
+                        <option>CNG</option>
+                        <option>LPG</option>
+                        <option>Electric</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    id="predictBtn"
+                    class="button button-primary"
+                    type="submit"
+                >
+                    Analyze car value
+                    <span aria-hidden="true">→</span>
+                </button>
+
+            </div>
+
+
+            <p
+                id="errorMessage"
+                class="form-help"
+                role="alert"
+                aria-live="polite"
+            ></p>
+
+        </form>
+
+    </div>
+
+</section>

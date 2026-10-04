@@ -1,57 +1,52 @@
-<section class="results-page">
-    <div class="results-page-shell">
+<!--
+    AutoValue AI
+    Results presentation page.
+-->
 
-        <div class="results-top-action">
-            <button
-                type="button"
-                class="results-back-button"
-                id="results-back-button"
+<section class="page">
+
+    <div class="page-header">
+
+        <p class="eyebrow">
+            Valuation result
+        </p>
+
+        <h1 class="page-title">
+            Your car's estimated value.
+        </h1>
+
+        <p class="page-description">
+            Compare the historical machine-learning estimate
+            with the market-oriented AI estimate.
+        </p>
+
+    </div>
+
+
+    <div id="results-content">
+
+        <div class="empty-state">
+
+            <div class="empty-state-icon">
+                📊
+            </div>
+
+            <h2>
+                No valuation yet
+            </h2>
+
+            <p>
+                Complete a vehicle valuation first. Your result
+                will appear here.
+            </p>
+
+            <a
+                class="button button-primary"
+                href="#predict"
             >
-                ← Back to form
-            </button>
-        </div>
-
-        <div class="results-page-header">
-
-            <div>
-                <p class="page-eyebrow">
-                    AUTOVALUE AI
-                </p>
-
-                <h1>
-                    Prediction Results
-                </h1>
-
-                <p class="page-subtitle">
-                    Review your previous used-car price predictions and compare
-                    the ML Price Estimate with current Market AI Estimate.
-                </p>
-            </div>
-
-            <div class="results-status">
-                <span class="status-dot"></span>
-                Local history
-            </div>
-
-        </div>
-
-        <div id="results-dashboard">
-
-            <div class="results-loading">
-                Loading prediction history...
-            </div>
-
-        </div>
-
-        <div class="results-page-actions">
-            <a href="#predict" class="results-predict-link">
-                🚗 Predict another car
-                <span aria-hidden="true">→</span>
+                Start Valuation
             </a>
 
-            <p class="results-action-note">
-                Try another vehicle to compare its value.
-            </p>
         </div>
 
     </div>
