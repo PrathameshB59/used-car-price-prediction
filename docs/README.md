@@ -65,7 +65,7 @@ How It Works
 ### Run Locally
 
 ```bash
-cd ~/Desktop/'AIML projects'/used-car-price-prediction
+cd ~/Dropbox-Secondary/used-car-price-prediction
 source .venv/bin/activate
 python -m pip install -r requirements.txt
 cd backend

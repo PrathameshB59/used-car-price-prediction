@@ -324,5 +324,50 @@
         </form>
 
     </div>
+        <!--
+        AutoValue AI — Prediction Loading Overlay
+        ============================================================
+        Purpose:
+            Give the user immediate feedback while Model A and
+            Model B are generating the valuation.
+
+        WHY:
+            Model B may require external AI/search processing and
+            can take several seconds.
+    -->
+    <div
+        id="predictionLoadingOverlay"
+        class="prediction-loading-overlay"
+        hidden
+        role="status"
+        aria-live="polite"
+        aria-busy="true"
+    >
+        <div class="prediction-loading-card">
+
+            <div
+                class="prediction-spinner"
+                aria-hidden="true"
+            ></div>
+
+            <span class="eyebrow">
+                VALUATION IN PROGRESS
+            </span>
+
+            <h2>
+                Analysing your car
+            </h2>
+
+            <p>
+                AutoValue AI is running the historical ML model
+                and checking current market evidence.
+            </p>
+
+            <span class="prediction-loading-note">
+                This may take a few moments.
+            </span>
+
+        </div>
+    </div>
 
 </section>

@@ -3,7 +3,7 @@
 ## Start Project
 
 ```bash
-cd ~/Desktop/'AIML projects'/used-car-price-prediction
+cd ~/Dropbox-Secondary/used-car-price-prediction
 source .venv/bin/activate
 ```
 

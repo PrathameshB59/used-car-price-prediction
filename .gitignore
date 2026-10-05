@@ -70,3 +70,14 @@ dump/
 # Python generated files
 __pycache__/
 *.py[cod]
+
+# Playwright / test runner output
+test-results/
+backend/test-results/
+
+# Dropbox selective-sync conflict copies
+.venv\ (Selective\ Sync\ Conflict)/
+.venv\ (Selective\ Sync\ Conflict\ 1)/
+.venv\ (Selective\ Sync\ Conflict\ 2)/
+node_modules\ (Selective\ Sync\ Conflict)/
+node_modules\ (Selective\ Sync\ Conflict\ 1)/

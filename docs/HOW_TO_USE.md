@@ -5,7 +5,7 @@
 ### 1. Start Django
 
 ```bash
-cd ~/Desktop/'AIML projects'/used-car-price-prediction
+cd ~/Dropbox-Secondary/used-car-price-prediction
 source .venv/bin/activate
 cd backend
 python manage.py runserver
