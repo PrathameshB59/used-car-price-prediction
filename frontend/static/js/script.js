@@ -274,135 +274,47 @@
             .replaceAll("'", "&#039;");
     }
 
-    function renderError(message, details = "") {
+    function renderError(message) {
         stopLoading();
-
-        const safeMessage = escapeHTML(message);
-        const safeDetails = details ? escapeHTML(details) : "";
-
         page.innerHTML = `
             <section class="flow-screen result-screen">
                 <div class="flow-shell">
                     <div class="flow-kicker">Prediction issue</div>
-
-                    <h1 class="flow-title">
-                        We couldn't complete the prediction
-                    </h1>
-
+                    <h1 class="flow-title">We couldn't finish that</h1>
                     <p class="flow-subtitle">
-                        Something interrupted the prediction process.
-                        Your data has not been changed.
+                        The prediction request did not return a usable result.
                     </p>
-
-                    <div class="flow-error">
-                        <strong>${safeMessage}</strong>
-                        ${
-                            safeDetails
-                                ? `<br><br><span>${safeDetails}</span>`
-                                : ""
-                        }
-                    </div>
-
+                    <div class="flow-error">${escapeHTML(message)}</div>
                     <div class="result-actions">
-                        <button
-                            type="button"
-                            id="retry-prediction"
-                        >
-                            ← Try again
-                        </button>
+                        <button type="button" id="retry-prediction">← Back to form</button>
                     </div>
                 </div>
             </section>
         `;
-
-        document.body.classList.add("stage-active");
         setHash("error");
-
-        document
-            .getElementById("retry-prediction")
-            ?.addEventListener("click", restoreForm);
-
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function getResultStatus(resultElement) {
-        const mlError = resultElement.querySelector(
-            ".model-a-card .model-error"
-        );
-
-        const marketAIError = resultElement.querySelector(
-            ".model-b-card .model-error"
-        );
-
-        if (!mlError && !marketAIError) {
-            return {
-                title: "Your price prediction is ready",
-                message:
-                    "Both prediction paths completed successfully."
-            };
-        }
-
-        if (!mlError && marketAIError) {
-            return {
-                title: "Prediction completed with limited analysis",
-                message:
-                    "Your ML Price Estimate is available, but Market AI could not complete the current-market analysis."
-            };
-        }
-
-        if (mlError && !marketAIError) {
-            return {
-                title: "Prediction completed with limited analysis",
-                message:
-                    "Market AI returned an estimate, but the ML Price Estimate could not be calculated."
-            };
-        }
-
-        return {
-            title: "Prediction could not be completed",
-            message:
-                "Neither prediction path returned a usable estimate."
-        };
+        document.getElementById("retry-prediction")?.addEventListener("click", restoreForm);
     }
 
     function renderResult(resultElement) {
         stopLoading();
-
-        const status = getResultStatus(resultElement);
-
         page.innerHTML = `
             <section class="flow-screen result-screen">
                 <div class="flow-shell">
                     <div class="flow-kicker">Prediction complete</div>
-
-                    <h1 class="flow-title">
-                        ${escapeHTML(status.title)}
-                    </h1>
-
+                    <h1 class="flow-title">Your valuation is ready</h1>
                     <p class="flow-subtitle">
-                        ${escapeHTML(status.message)}
+                        A clear comparison between the trained ML model and AI market analysis.
                     </p>
-
-                    <div class="result-container">
-                        ${resultElement.outerHTML}
-                    </div>
-
+                    <div class="result-container">${resultElement.outerHTML}</div>
                     <div class="result-actions">
-                        <button type="button" id="new-prediction">
-                            ↻ Predict another car
-                        </button>
+                        <button type="button" id="new-prediction">↻ Predict another car</button>
                     </div>
                 </div>
             </section>
         `;
-
         document.body.classList.add("stage-active");
         setHash("result");
-
-        document
-            .getElementById("new-prediction")
-            ?.addEventListener("click", restoreForm);
-
+        document.getElementById("new-prediction")?.addEventListener("click", restoreForm);
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -445,18 +357,7 @@
                 const result = doc.querySelector("#result");
 
                 if (result) {
-
-                    if (
-                        window.AutoValueResults &&
-                        typeof window.AutoValueResults.saveResult === "function"
-                    ) {
-                        window.AutoValueResults.saveResult(
-                            result.outerHTML
-                        );
-                    }
-
                     renderResult(result);
-
                     return;
                 }
 
@@ -469,12 +370,7 @@
                 renderError("No prediction result was found in the server response.");
             })
             .catch((error) => {
-                renderError(
-                    "We couldn't reach the prediction service.",
-                    "Please check that the Django server is running, then try again."
-                );
-
-                console.error("Prediction request failed:", error);
+                renderError(error.message || "Network error while requesting prediction.");
             });
     }
 
@@ -499,130 +395,4 @@
     }
 
     bootForm();
-})();
-
-(function () {
-    "use strict";
-
-    function setupFrontendPages() {
-        const howItWorksLinks = document.querySelectorAll(
-            'a[href="#how-it-works"], [data-page="how-it-works"]'
-        );
-
-        if (!howItWorksLinks.length) {
-            return;
-        }
-
-        howItWorksLinks.forEach((link) => {
-            link.addEventListener("click", async (event) => {
-                event.preventDefault();
-
-                if (window.initHowItWorksPage) {
-                    await window.initHowItWorksPage();
-                }
-            });
-        });
-    }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", setupFrontendPages);
-    } else {
-        setupFrontendPages();
-    }
-})();
-
-/* =========================================================
-   THEME TOGGLE
-   Switches between dark and light mode and remembers
-   the user's choice in localStorage.
-========================================================= */
-
-(function () {
-    "use strict";
-
-    const THEME_KEY = "autovalue-theme";
-
-    function getSavedTheme() {
-        try {
-            return localStorage.getItem(THEME_KEY) === "light"
-                ? "light"
-                : "dark";
-        } catch (_) {
-            return "dark";
-        }
-    }
-
-    function saveTheme(theme) {
-        try {
-            localStorage.setItem(THEME_KEY, theme);
-        } catch (_) {
-            // Theme still works even if browser storage is unavailable.
-        }
-    }
-
-    function applyTheme(theme) {
-        const isLight = theme === "light";
-
-        document.body.classList.toggle("light-mode", isLight);
-        document.documentElement.classList.toggle("light-mode", isLight);
-
-        const toggle = document.getElementById("theme-toggle");
-
-        if (!toggle) {
-            return;
-        }
-
-        const icon = toggle.querySelector(".theme-toggle-icon");
-        const label = toggle.querySelector(".theme-toggle-label");
-
-        if (isLight) {
-            toggle.setAttribute("aria-label", "Switch to dark mode");
-            toggle.setAttribute("title", "Switch to dark mode");
-
-            if (icon) {
-                icon.textContent = "🌙";
-            }
-
-            if (label) {
-                label.textContent = "Dark";
-            }
-        } else {
-            toggle.setAttribute("aria-label", "Switch to light mode");
-            toggle.setAttribute("title", "Switch to light mode");
-
-            if (icon) {
-                icon.textContent = "☀️";
-            }
-
-            if (label) {
-                label.textContent = "Light";
-            }
-        }
-    }
-
-    function initTheme() {
-        applyTheme(getSavedTheme());
-
-        const toggle = document.getElementById("theme-toggle");
-
-        if (!toggle) {
-            return;
-        }
-
-        toggle.addEventListener("click", function () {
-            const nextTheme =
-                document.body.classList.contains("light-mode")
-                    ? "dark"
-                    : "light";
-
-            applyTheme(nextTheme);
-            saveTheme(nextTheme);
-        });
-    }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initTheme);
-    } else {
-        initTheme();
-    }
 })();

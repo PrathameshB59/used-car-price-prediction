@@ -16,74 +16,6 @@
 </head>
 
 <body>
-        <!-- =====================================================
-         AUTO VALUE AI - APPLICATION SHELL
-         ===================================================== -->
-
-    <nav class="topbar" aria-label="Main navigation">
-
-        <div class="topbar-brand">
-<a href="#" class="brand">
-                <span class="brand-mark">🚗</span>
-
-                <span class="brand-copy">
-                    <strong>AutoValue</strong>
-                    <small>AI</small>
-                </span>
-            </a>
-        </div>
-
-        <div class="topbar-nav">
-            <a href="#predict" class="topbar-link active">
-                Predict
-            </a>
-
-            <a href="#results" class="topbar-link">
-                Results
-            </a>
-
-            <a href="#how-it-works" class="topbar-link">
-                How It Works
-            </a>
-        </div>
-
-        <div class="topbar-actions">
-
-            <span class="system-status">
-                <span class="status-dot"></span>
-                AI Online
-            </span>
-
-            <button
-                type="button"
-                class="theme-toggle"
-                id="theme-toggle"
-                aria-label="Switch to light mode"
-                title="Switch to light mode"
-            >
-                <span class="theme-toggle-icon" aria-hidden="true">☀️</span>
-                <span class="theme-toggle-label">Light</span>
-            </button>
-
-            <a
-                href="https://github.com/PrathameshB59/used-car-price-prediction"
-                class="github-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open project on GitHub"
-            >
-                GitHub
-            </a>
-
-        </div>
-
-    </nav>
-
-    <!-- =====================================================
-         SIDEBAR
-         ===================================================== -->
-<!-- Mobile overlay -->
-<!-- Main application -->
 
     <main class="page">
 
@@ -167,10 +99,7 @@
              PREDICTION CARD
         ========================== -->
 
-        <section
-            class="prediction-card"
-            id="predict"
-        >
+        <section class="prediction-card">
 
             <div class="card-heading">
 
@@ -710,7 +639,7 @@
 
 
             <!-- =========================
-                 ML PRICE ESTIMATE vs MARKET AI ESTIMATE RESULT
+                 MODEL A vs MODEL B RESULT
             ========================== -->
 
             {% if model_a or model_b or model_a_error or model_b_error %}
@@ -718,7 +647,7 @@
             <div id="result" class="result">
 
                 <p class="comparison-title">
-                    ML PRICE ESTIMATE vs MARKET AI ESTIMATE
+                    MODEL A vs MODEL B
                 </p>
 
                 <p class="result-note">
@@ -731,21 +660,18 @@
                      PREDICTION CARDS
                 ========================== -->
 
-                <div
-                    id="compare"
-                    class="model-comparison"
-                >
+                <div class="model-comparison">
 
-                    <!-- ML PRICE ESTIMATE -->
+                    <!-- MODEL A -->
 
                     <div class="model-card model-a-card">
 
                         <p class="model-label">
-                            ML PRICE ESTIMATE
+                            MODEL A
                         </p>
 
                         <h3>
-                            Random Forest Estimate
+                            Trained ML Model
                         </h3>
 
                         {% if model_a %}
@@ -762,7 +688,7 @@
                         {% else %}
 
                         <p class="model-error">
-                            ML Price Estimate failed.
+                            Model A prediction failed.
                         </p>
 
                         {% if model_a_error %}
@@ -776,16 +702,16 @@
                     </div>
 
 
-                    <!-- MARKET AI ESTIMATE -->
+                    <!-- MODEL B -->
 
                     <div class="model-card model-b-card">
 
                         <p class="model-label">
-                            MARKET AI ESTIMATE
+                            MODEL B
                         </p>
 
                         <h3>
-                            Gemini + Market Research
+                            AI + Internet Market Model
                         </h3>
 
                         {% if model_b %}
@@ -816,7 +742,7 @@
                         {% else %}
 
                         <p class="model-error">
-                            Market AI Estimate failed.
+                            Model B prediction failed.
                         </p>
 
                         {% if model_b_error %}
@@ -852,7 +778,7 @@
                         <strong>
                             {{ comparison.difference_percent|floatformat:2 }}%
                         </strong>
-                        difference relative to ML Price Estimate.
+                        difference relative to Model A.
                     </p>
 
                     <p>
@@ -866,7 +792,7 @@
 
 
                 <!-- =========================
-                     MARKET AI ESTIMATE REASONING
+                     MODEL B REASONING
                 ========================== -->
 
                 {% if model_b.reasoning %}
@@ -874,7 +800,7 @@
                 <div class="model-b-analysis">
 
                     <p class="comparison-heading">
-                        Market AI Analysis
+                        Model B Market Analysis
                     </p>
 
                     <p>
@@ -949,18 +875,6 @@
 
     </main>
 
-
-    <script
-        src="{% static 'predictor/js/pages/how-it-works.js' %}"
-    ></script>
-    <script
-        src="{% static 'predictor/config/app-config.js' %}"
-    ></script>
-
-
-    <script
-        src="{% static 'predictor/js/pages/results.js' %}"
-    ></script>
 
     <script
         src="{% static 'predictor/js/script.js' %}"
